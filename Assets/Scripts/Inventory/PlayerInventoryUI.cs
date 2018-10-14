@@ -79,7 +79,7 @@ public class PlayerInventoryUI : MonoBehaviour {
 		if (selected_item > 0) {//to jest do poprawy musze pomyśleć o warunku jak wracac na samą góre.
 			set_highlight_position(current_highlight_position + 3); //przeskok jest o 3 wiec zmieniam tylko o 3(px);
 			selected_item--;
-			update_inventory(true);
+			update_inventory(false);
 		}
 	}
 
