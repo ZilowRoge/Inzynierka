@@ -13,9 +13,6 @@ public class PlayerManager : MonoBehaviour {
 	public PlayerBackpackSlot backpack_slot;
 	public PlayerInventory player_inventory;
 	public WeaponBehavior weapon_script;
-
-	public BackpackBehavior backpack_script;
-
 	public PlayerInventoryUI inventory_ui;
 
 
@@ -102,7 +99,6 @@ public class PlayerManager : MonoBehaviour {
 			weapon_script = weapon_slots.get_script();
 		} else if (hit.collider.tag == "Backpack" && backpack_slot.can_pickup()) {
 			backpack_slot.pick_up(hit.collider.gameObject);
-			backpack_script = backpack_slot.get_script();
 		} else if (hit.collider.tag == "Ammo") {
 			AmmoBox ammobox = hit.collider.gameObject.GetComponent<AmmoBox>();
 			ammobox.on_pickup();

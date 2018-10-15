@@ -7,9 +7,6 @@ using Inventory;
 
 namespace Player {
 public class PlayerUI : MonoBehaviour {
-
-	public PlayerInventory inventory;
-
 	public PlayerStats player_statisctic;
 	public List<Text> list_of_texts = new List<Text>();
 
@@ -19,7 +16,6 @@ public class PlayerUI : MonoBehaviour {
 	// Use this for initializations
 	void Start () {
 		player_statisctic = gameObject.GetComponent<PlayerStats>();
-		inventory = gameObject.GetComponent<PlayerInventory>();
 		
 		status_bars[0].value = player_statisctic.curren_health_points;
 		status_bars[1].value = player_statisctic.current_hunger;
