@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 114788920450987404}
   - component: {fileID: 95370444617104042}
   m_Layer: 0
-  m_Name: Goblin
+  m_Name: Mob1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -555,6 +555,8 @@ MonoBehaviour:
   patrol_script: {fileID: 0}
   idle_script: {fileID: 0}
   chase_script: {fileID: 0}
+  animator: {fileID: 0}
+  attack_target: {fileID: 0}
   mob_view: {fileID: 0}
 --- !u!114 &114913817703500976
 MonoBehaviour:
@@ -571,7 +573,6 @@ MonoBehaviour:
   location_offset: 1.5
   mob_view: {fileID: 0}
   attack_target: {fileID: 0}
-  animator: {fileID: 0}
 --- !u!135 &135123227063538872
 SphereCollider:
   m_ObjectHideFlags: 1
