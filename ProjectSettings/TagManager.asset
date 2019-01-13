@@ -9,6 +9,8 @@ TagManager:
   - Backpack
   - Item
   - Ammo
+  - MobAI
+  - Ground
   layers:
   - Default
   - TransparentFX

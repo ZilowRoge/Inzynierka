@@ -145,7 +145,12 @@
      <Compile Include="Assets\Scripts\Inventory\Item\WaterBottle.cs" />
      <Compile Include="Assets\Scripts\Inventory\PlayerInventory.cs" />
      <Compile Include="Assets\Scripts\Inventory\PlayerInventoryUI.cs" />
+     <Compile Include="Assets\Scripts\Level\DeployItems.cs" />
      <Compile Include="Assets\Scripts\ManageInputs.cs" />
+     <Compile Include="Assets\Scripts\MobAI\Mob.cs" />
+     <Compile Include="Assets\Scripts\MobAI\MobMovment.cs" />
+     <Compile Include="Assets\Scripts\MobAI\MovingGraph\Graph.cs" />
+     <Compile Include="Assets\Scripts\MobAI\MovingGraph\Node.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBackpackSlot.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovment.cs" />
@@ -157,8 +162,10 @@
      <Compile Include="Assets\Scripts\Weapon\BulletBehavior.cs" />
      <Compile Include="Assets\Scripts\Weapon\BulletType.cs" />
      <Compile Include="Assets\Scripts\Weapon\WeaponBehavior.cs" />
+     <None Include="Assets\Day-Night Skyboxes\readme.txt" />
      <None Include="Assets\GoogleVR\Shaders\GvrUIOverlayFont.shader" />
      <None Include="Assets\GoogleVR\Shaders\GvrAdditiveOverlay.shader" />
+     <None Include="Assets\Day-Night Skyboxes\Textures\Readme for Assigning.txt" />
      <None Include="Assets\GoogleVR\Shaders\GvrController.shader" />
      <None Include="Assets\GoogleVR\Shaders\GvrUnlitTransparentOverlay.shader" />
      <None Include="Assets\GoogleVR\Shaders\GvrUnlitTransparentOverlayColor.shader" />
