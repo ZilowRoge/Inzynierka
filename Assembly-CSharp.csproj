@@ -147,6 +147,13 @@
      <Compile Include="Assets\Scripts\Inventory\PlayerInventoryUI.cs" />
      <Compile Include="Assets\Scripts\Level\DeployItems.cs" />
      <Compile Include="Assets\Scripts\ManageInputs.cs" />
+     <Compile Include="Assets\Scripts\Mob\FieldOfView.cs" />
+     <Compile Include="Assets\Scripts\Mob\MobBehavior.cs" />
+     <Compile Include="Assets\Scripts\Mob\MobChase.cs" />
+     <Compile Include="Assets\Scripts\Mob\MobController.cs" />
+     <Compile Include="Assets\Scripts\Mob\MobIdle.cs" />
+     <Compile Include="Assets\Scripts\Mob\MobMovment.cs" />
+     <Compile Include="Assets\Scripts\Mob\MobPatrol.cs" />
      <Compile Include="Assets\Scripts\MobAI\Mob.cs" />
      <Compile Include="Assets\Scripts\MobAI\MobMovment.cs" />
      <Compile Include="Assets\Scripts\MobAI\MovingGraph\Graph.cs" />
