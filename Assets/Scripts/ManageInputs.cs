@@ -46,6 +46,12 @@ public class ManageInputs : MonoBehaviour {
 		if (vertical < 0.0f) {
 			player_movment.move_backward();
 		}
+		if (Input.GetKey(KeyCode.Space)) {
+			player_movment.jump();
+		}
+		if (Input.GetKeyDown(KeyCode.LeftControl)) {
+			player_movment.change_sneak();
+		}
 	}
 
 	void manage_player_slots(){

@@ -13,10 +13,21 @@ public class PlayerMovment : MonoBehaviour {
 
 	public float force_multiplayer = 400;
 
+	public float jump_force = 3200;
+
 	public float max_speed = 20;
+
+	public float max_sneak_speed = 6;
+
+	public float current_speed;
+
+	public bool can_jump = true;
+
+	public bool sneak = false;
 
 	private void Start()
 	{
+		current_speed = max_speed;
 		player_rigidbody = this.GetComponent<Rigidbody>();
 	}
 	
@@ -58,7 +69,38 @@ public class PlayerMovment : MonoBehaviour {
 	{
 		player_rigidbody.AddForce(-player_body.transform.right * force_multiplayer * Time.deltaTime);
 	}
+
+	public void change_sneak()
+	{
+		sneak = !sneak;
+		if (sneak) {
+			current_speed = max_sneak_speed;
+		} else {
+			current_speed = max_speed;
+		}
+	}
 	
+	public void jump()
+	{
+		if (can_jump) {
+			Debug.Log("Jumped");
+			player_rigidbody.AddForce(Vector3.up * jump_force * Time.deltaTime);
+			can_jump = false;
+		}
+	}
+
+	/// <summary>
+	/// OnCollisionEnter is called when this collider/rigidbody has begun
+	/// touching another rigidbody/collider.
+	/// </summary>
+	/// <param name="other">The Collision data associated with this collision.</param>
+	void OnCollisionEnter(Collision other)
+	{
+		if (!can_jump && other.collider.gameObject.tag.Equals("Ground")) {
+			Debug.Log("Touched the ground");
+			can_jump = true;
+		}
+	}
 }
 
 } //namespace Player

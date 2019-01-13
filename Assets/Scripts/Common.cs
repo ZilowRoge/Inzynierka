@@ -44,5 +44,4 @@ public class Common : MonoBehaviour {
 		ammo_type_to_path[EAmmoType.Calliber_5] = "Assets/Prefabs/Ammo/Ammobox50.prefab";
 		ammo_type_to_path[EAmmoType.Calliber_45] = "Assets/Prefabs/Ammo/Ammobo45.prefab";
 	}
-
 }
