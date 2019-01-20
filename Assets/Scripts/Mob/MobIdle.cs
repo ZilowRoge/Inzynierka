@@ -19,12 +19,13 @@ public class MobIdle : MobBehavior {
 	public void execute_state()
 	{
 		if (timer_less_than_zero()) {
-			idle_timer = Random.Range(0.5f, 2);
+			idle_timer = Random.Range(0.5f, 0.8f);
 			should_end_idle = true;
 		} else {
 			if (!movment_script.should_rotate()) {
 				//maybe add here rotation speed setter
-				destination = get_random_point(-86, 167, 96, 145);
+				destination = get_random_point(transform.position.x - 10, transform.position.x + 10,
+				                               transform.position.z - 10, transform.position.z + 10);
 				movment_script.set_point_to_rotate(destination);
 			}
 			idle_timer -= Time.deltaTime;

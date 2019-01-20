@@ -7,22 +7,23 @@ public class MobController : MonoBehaviour {
 		EPATROL,
 		EIDLE,
 		ECHASE,
+		EFOLLOWPATH
 	}
 	public MobBehaviorState state = MobBehaviorState.EPATROL;
-
 	public MobPatrol patrol_script;
 	public MobIdle idle_script;
 	public MobChase chase_script;
+	public MobFollowPath follow_path_script;
 	public Animator animator;
-
 	public GameObject attack_target;
-
 	public FieldOfView mob_view;
+
 	// Use this for initialization
 	void Start () {
 		patrol_script = GetComponent<MobPatrol>();
 		idle_script = GetComponent<MobIdle>();
 		chase_script = GetComponent<MobChase>();
+		follow_path_script = GetComponent<MobFollowPath>();
 		mob_view = GetComponent<FieldOfView>();
 		animator = GetComponent<Animator>();
 		animator.speed = 0.75f;/*attack speed */
@@ -38,12 +39,15 @@ public class MobController : MonoBehaviour {
 			chase_script.set_destination(mob_view.target.position);
 		}
 		try_attack();
+
 	}
+
+	
 
 	IEnumerator wake_mob(float delay)
 	{
 		while(true) {
-		//	Debug.Log("wake_mob");
+			//Debug.Log("wake_mob");
 			yield return new WaitForSeconds (delay);
 			mob_state_machine();
 		}
@@ -63,6 +67,9 @@ public class MobController : MonoBehaviour {
 			case MobBehaviorState.EIDLE:
 				idle();
 				break;
+			case MobBehaviorState.EFOLLOWPATH:
+				follow_path();
+				break;
 			default:
 				break;
 		}
@@ -74,30 +81,49 @@ public class MobController : MonoBehaviour {
 	}
 	void patrol ()
 	{
-		if (player_spotted()) {
-			change_state(MobBehaviorState.ECHASE);
-		}
-		if (patrol_script.destination_reached("MobController") && patrol_script.destination_set) {
-			//Debug.Log("Set Idle state");
-			change_state(MobBehaviorState.EIDLE);
-			patrol_script.destination_set = false;
+		if (follow_path_script.is_path_found()) {
+			change_state(MobBehaviorState.EFOLLOWPATH);
 		} else {
-			patrol_script.execute_state();
+			if (player_spotted()) {
+				change_state(MobBehaviorState.ECHASE);
+			}
+			if (patrol_script.destination_reached("MobController") &&
+			    patrol_script.destination_set) {
+				//Debug.Log("Set Idle state");
+				change_state(MobBehaviorState.EIDLE);
+				patrol_script.destination_set = false;
+			} else {
+				//Debug.Log("Execute patrol state");
+				patrol_script.execute_state();
+			}
 		}
 	}
 
 	void idle()
 	{
+		if (follow_path_script.is_path_found()) {
+			change_state(MobBehaviorState.EFOLLOWPATH);
+		} else {
+			if (player_spotted()) {
+				change_state(MobBehaviorState.ECHASE);
+			}
+			if (idle_script.should_end_idle && idle_script.timer_less_than_zero()) {
+				//Debug.Log("Should end idle");
+				idle_script.should_end_idle = false;
+				change_state(MobBehaviorState.EPATROL);
+			} else {
+				//Debug.Log("Execute state IDLE");
+				idle_script.execute_state();
+			}
+		}
+	}
+
+	void follow_path()
+	{
 		if (player_spotted()) {
 			change_state(MobBehaviorState.ECHASE);
-		}
-		if (idle_script.should_end_idle && idle_script.timer_less_than_zero()) {
-			//Debug.Log("Should end idle");
-			idle_script.should_end_idle = false;
-			change_state(MobBehaviorState.EPATROL);
 		} else {
-			//Debug.Log("Execute state IDLE");
-			idle_script.execute_state();
+			follow_path_script.execute_state();
 		}
 	}
 
@@ -136,7 +162,6 @@ public class MobController : MonoBehaviour {
 			}
 		}
 	}
-
 
 }
 

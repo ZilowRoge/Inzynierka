@@ -15,6 +15,7 @@ public class MobControllerEditor : Editor {
 		if (mob_controller.patrol_script != null) {
 			Handles.DrawLine(mob_controller.transform.position, mob_controller.patrol_script.get_destination());
 		}
+
 	}
 }
 } //namespace Editor

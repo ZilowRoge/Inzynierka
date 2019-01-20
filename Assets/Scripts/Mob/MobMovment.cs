@@ -4,15 +4,14 @@ using UnityEngine;
 namespace Mobs{
 public class MobMovment : MonoBehaviour {
 	public float speed;
-	public float rotation_speed;
+	public float rotation_speed = 0.7f;
 	public float max_speed;
 	public Rigidbody rigidbody;
 	public Vector3 direction;
 	public Vector3 destination;
 	public float angle;
 
-	private float angle_offset = 51;
-	private bool is_script_active = false;
+	private float angle_offset = 360;
 	private bool direction_found = false;
 	public void Start()
 	{
@@ -50,18 +49,13 @@ public class MobMovment : MonoBehaviour {
 	public bool should_rotate()
 	{
 		angle = Vector3.SignedAngle(new Vector3(transform.forward.x, transform.position.y, transform.forward.z), direction, Vector3.up);
-		
+		//Debug.Log("Should_rotate: angle = " + angle);
 		return angle >= angle_offset || angle <= -angle_offset;
 	}
 
 	public void stop()
 	{
 		rigidbody.velocity = Vector3.zero;
-	}
-
-	public void set_active(bool active)
-	{
-		is_script_active = active;
 	}
 
 	public void set_destionation(Vector3 dest)
@@ -92,7 +86,7 @@ public class MobMovment : MonoBehaviour {
 	{
 		direction = destination - new Vector3(transform.position.x, transform.position.y, transform.position.z);
 		angle = Vector3.SignedAngle(new Vector3(transform.forward.x, transform.position.y, transform.forward.z), direction, Vector3.up);
-		Debug.Log("Angle: " + angle);
+		//Debug.Log("Angle: " + angle);
 	}
 }
 
