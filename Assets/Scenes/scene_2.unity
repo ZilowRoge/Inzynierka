@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -279,6 +279,10 @@ MonoBehaviour:
   neighbour_nodes:
   - {fileID: 1902135907}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!4 &17869293
 Transform:
   m_ObjectHideFlags: 0
@@ -669,6 +673,10 @@ MonoBehaviour:
   neighbour_nodes:
   - {fileID: 926896953}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!114 &123387909 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114486614632688524, guid: 7783ae6dbbb7e504486420a3364470f5,
@@ -853,9 +861,9 @@ GameObject:
   - component: {fileID: 152933023}
   - component: {fileID: 152933022}
   - component: {fileID: 152933021}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House (2)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1491,6 +1499,10 @@ MonoBehaviour:
   - {fileID: 392378879}
   - {fileID: 452793107}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!1 &289043067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,6 +1730,29 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1102672563}
   m_Script: {fileID: 11500000, guid: 2b61d4ea0ae62a24e99a6bc41ef68926, type: 3}
+--- !u!1 &321835352 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1862451769477374, guid: 1b81d77d0c1390e42a82ebeecf5e183c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1729903793}
+--- !u!114 &321835365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 321835352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c59f161762dcf458487b21d48e7c39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movment_script: {fileID: 0}
+  location_offset: 1.5
+  graph: {fileID: 1164996449}
+  path: []
+  path_found: 0
+  destination_set: 0
+  node_index: 0
 --- !u!1 &330254241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,9 +1764,9 @@ GameObject:
   - component: {fileID: 330254245}
   - component: {fileID: 330254244}
   - component: {fileID: 330254243}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House (6)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1868,10 +1903,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neighbour_nodes:
-  - {fileID: 92240472}
-  - {fileID: 452793107}
+  - {fileID: 793656528}
+  - {fileID: 1709892357}
   - {fileID: 1022189752}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!1 &391572759
 GameObject:
   m_ObjectHideFlags: 0
@@ -1998,7 +2037,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbour_nodes:
   - {fileID: 1702157257}
+  - {fileID: 279911758}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!1 &394026955
 GameObject:
   m_ObjectHideFlags: 0
@@ -2080,9 +2124,9 @@ GameObject:
   - component: {fileID: 412935053}
   - component: {fileID: 412935052}
   - component: {fileID: 412935051}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House (1)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2518,9 +2562,9 @@ GameObject:
   - component: {fileID: 451650112}
   - component: {fileID: 451650111}
   - component: {fileID: 451650110}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House (11)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2632,9 +2676,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neighbour_nodes:
-  - {fileID: 1702157257}
-  - {fileID: 452793107}
+  - {fileID: 1160216193}
+  - {fileID: 279911758}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!1 &467044352
 GameObject:
   m_ObjectHideFlags: 0
@@ -3114,7 +3162,7 @@ GameObject:
   - component: {fileID: 587503491}
   - component: {fileID: 587503485}
   - component: {fileID: 587503493}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4033,6 +4081,10 @@ MonoBehaviour:
   - {fileID: 1680742318}
   - {fileID: 1603436029}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!1001 &694220778
 Prefab:
   m_ObjectHideFlags: 0
@@ -4106,9 +4158,9 @@ GameObject:
   - component: {fileID: 696247032}
   - component: {fileID: 696247031}
   - component: {fileID: 696247030}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House (13)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4445,6 +4497,54 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1648631966}
   m_Script: {fileID: 11500000, guid: c85a053cd29baef4c9c18242342bea04, type: 3}
+--- !u!1 &793656528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 793656529}
+  - component: {fileID: 793656530}
+  m_Layer: 0
+  m_Name: Node18
+  m_TagString: MobAI
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &793656529
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 793656528}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 35.8, y: 0, z: 67.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1164996448}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &793656530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 793656528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eb80393c48ac39488d7086139906c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neighbour_nodes:
+  - {fileID: 926896953}
+  - {fileID: 371884273}
+  distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!1 &794716288
 GameObject:
   m_ObjectHideFlags: 0
@@ -4456,7 +4556,7 @@ GameObject:
   - component: {fileID: 794716292}
   - component: {fileID: 794716290}
   - component: {fileID: 794716291}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4892,10 +4992,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neighbour_nodes:
-  - {fileID: 1702157257}
+  - {fileID: 1160216193}
   - {fileID: 1192249155}
   - {fileID: 92240472}
+  - {fileID: 793656528}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
+--- !u!1 &932462687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 932462689}
+  - component: {fileID: 932462688}
+  m_Layer: 0
+  m_Name: Directional light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &932462688
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 932462687}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &932462689
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 932462687}
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: 47.2, y: 54.5, z: 23.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &965647295
 GameObject:
   m_ObjectHideFlags: 0
@@ -4907,9 +5077,9 @@ GameObject:
   - component: {fileID: 965647299}
   - component: {fileID: 965647298}
   - component: {fileID: 965647297}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5082,9 +5252,9 @@ GameObject:
   - component: {fileID: 993627724}
   - component: {fileID: 993627723}
   - component: {fileID: 993627722}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fence
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5383,6 +5553,10 @@ MonoBehaviour:
   neighbour_nodes:
   - {fileID: 371884273}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!4 &1032632423 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4050096797315896, guid: 3f07f297fdb7771408ef75d55d47cc90,
@@ -5405,9 +5579,9 @@ GameObject:
   - component: {fileID: 1045263423}
   - component: {fileID: 1045263422}
   - component: {fileID: 1045263421}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House (10)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5896,9 +6070,9 @@ GameObject:
   - component: {fileID: 1148874459}
   - component: {fileID: 1148874458}
   - component: {fileID: 1148874457}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House (9)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5969,6 +6143,55 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1148874455}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1160216193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1160216194}
+  - component: {fileID: 1160216195}
+  m_Layer: 0
+  m_Name: Node19
+  m_TagString: MobAI
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1160216194
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1160216193}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 76.1, y: 0, z: 74.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1164996448}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1160216195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1160216193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eb80393c48ac39488d7086139906c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neighbour_nodes:
+  - {fileID: 1702157257}
+  - {fileID: 452793107}
+  - {fileID: 926896953}
+  distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!1 &1161096182
 GameObject:
   m_ObjectHideFlags: 0
@@ -6165,9 +6388,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1164996448}
+  - component: {fileID: 1164996449}
   m_Layer: 0
   m_Name: MobMovingGraph
-  m_TagString: Untagged
+  m_TagString: MobAI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6199,9 +6423,40 @@ Transform:
   - {fileID: 1902135908}
   - {fileID: 1966865119}
   - {fileID: 17869293}
+  - {fileID: 793656529}
+  - {fileID: 1160216194}
   m_Father: {fileID: 758431034}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1164996449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1164996447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103d1d03f2577444cb15031d7e7143df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  node_list:
+  - {fileID: 392378879}
+  - {fileID: 1702157257}
+  - {fileID: 692401801}
+  - {fileID: 1680742318}
+  - {fileID: 452793107}
+  - {fileID: 1603436029}
+  - {fileID: 926896953}
+  - {fileID: 92240472}
+  - {fileID: 1192249155}
+  - {fileID: 279911758}
+  - {fileID: 1709892357}
+  - {fileID: 371884273}
+  - {fileID: 1022189752}
+  - {fileID: 2057433636}
+  - {fileID: 1902135907}
+  - {fileID: 1966865118}
+  - {fileID: 17869291}
 --- !u!1 &1175403832
 GameObject:
   m_ObjectHideFlags: 0
@@ -6364,6 +6619,10 @@ MonoBehaviour:
   - {fileID: 452793107}
   - {fileID: 1709892357}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!1 &1222610614
 GameObject:
   m_ObjectHideFlags: 0
@@ -7197,9 +7456,9 @@ GameObject:
   - component: {fileID: 1359347377}
   - component: {fileID: 1359347376}
   - component: {fileID: 1359347375}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House (5)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7281,9 +7540,9 @@ GameObject:
   - component: {fileID: 1359370087}
   - component: {fileID: 1359370086}
   - component: {fileID: 1359370085}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fence (1)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8106,9 +8365,9 @@ GameObject:
   - component: {fileID: 1503881495}
   - component: {fileID: 1503881494}
   - component: {fileID: 1503881493}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House (8)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8818,9 +9077,9 @@ GameObject:
   - component: {fileID: 1592761685}
   - component: {fileID: 1592761684}
   - component: {fileID: 1592761683}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House (12)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8934,6 +9193,10 @@ MonoBehaviour:
   neighbour_nodes:
   - {fileID: 692401801}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!1 &1603705221
 GameObject:
   m_ObjectHideFlags: 0
@@ -9579,6 +9842,10 @@ MonoBehaviour:
   neighbour_nodes:
   - {fileID: 692401801}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!1 &1680796308
 GameObject:
   m_ObjectHideFlags: 0
@@ -9664,9 +9931,9 @@ GameObject:
   - component: {fileID: 1697016800}
   - component: {fileID: 1697016799}
   - component: {fileID: 1697016798}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House (3)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9760,7 +10027,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1702157257}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 75.1, y: 0, z: 69.4}
+  m_LocalPosition: {x: 75.1, y: 0, z: 66.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1164996448}
@@ -9783,6 +10050,10 @@ MonoBehaviour:
   - {fileID: 452793107}
   - {fileID: 926896953}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!1001 &1702830350
 Prefab:
   m_ObjectHideFlags: 0
@@ -9872,7 +10143,12 @@ MonoBehaviour:
   neighbour_nodes:
   - {fileID: 1192249155}
   - {fileID: 2057433636}
+  - {fileID: 371884273}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!1 &1711289627
 GameObject:
   m_ObjectHideFlags: 0
@@ -10054,7 +10330,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4053938484504206, guid: 1b81d77d0c1390e42a82ebeecf5e183c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 167.9
+      value: 120.57
       objectReference: {fileID: 0}
     - target: {fileID: 4053938484504206, guid: 1b81d77d0c1390e42a82ebeecf5e183c, type: 2}
       propertyPath: m_LocalPosition.y
@@ -10062,7 +10338,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4053938484504206, guid: 1b81d77d0c1390e42a82ebeecf5e183c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 96.5
+      value: 118.93
       objectReference: {fileID: 0}
     - target: {fileID: 4053938484504206, guid: 1b81d77d0c1390e42a82ebeecf5e183c, type: 2}
       propertyPath: m_LocalRotation.x
@@ -10157,6 +10433,31 @@ Prefab:
     - target: {fileID: 4606570879909296, guid: 1b81d77d0c1390e42a82ebeecf5e183c, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808926827025380, guid: 1b81d77d0c1390e42a82ebeecf5e183c,
+        type: 2}
+      propertyPath: graph
+      value: 
+      objectReference: {fileID: 1164996449}
+    - target: {fileID: 114347497021235884, guid: 1b81d77d0c1390e42a82ebeecf5e183c,
+        type: 2}
+      propertyPath: layer_mask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 114060257593259324, guid: 1b81d77d0c1390e42a82ebeecf5e183c,
+        type: 2}
+      propertyPath: target_mask.m_Bits
+      value: 1536
+      objectReference: {fileID: 0}
+    - target: {fileID: 114060257593259324, guid: 1b81d77d0c1390e42a82ebeecf5e183c,
+        type: 2}
+      propertyPath: obstacle_mask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 114017796613177644, guid: 1b81d77d0c1390e42a82ebeecf5e183c,
+        type: 2}
+      propertyPath: rotation_speed
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b81d77d0c1390e42a82ebeecf5e183c, type: 2}
@@ -10820,9 +11121,9 @@ GameObject:
   - component: {fileID: 1853195182}
   - component: {fileID: 1853195181}
   - component: {fileID: 1853195180}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House (7)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10976,9 +11277,9 @@ GameObject:
   - component: {fileID: 1872786720}
   - component: {fileID: 1872786719}
   - component: {fileID: 1872786718}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11128,6 +11429,10 @@ MonoBehaviour:
   - {fileID: 1966865118}
   - {fileID: 17869291}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!1 &1903505515
 GameObject:
   m_ObjectHideFlags: 0
@@ -11539,6 +11844,10 @@ MonoBehaviour:
   neighbour_nodes:
   - {fileID: 1902135907}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!4 &1967051060 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4176015227977512, guid: 25c470878751fd54a8f1d847da48fb4c,
@@ -11958,6 +12267,10 @@ MonoBehaviour:
   - {fileID: 1709892357}
   - {fileID: 1902135907}
   distance_between_nodes: []
+  parent: {fileID: 0}
+  g: 0
+  h: 0
+  f: 0
 --- !u!1 &2065680673
 GameObject:
   m_ObjectHideFlags: 0
@@ -11969,9 +12282,9 @@ GameObject:
   - component: {fileID: 2065680677}
   - component: {fileID: 2065680676}
   - component: {fileID: 2065680675}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House (4)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
