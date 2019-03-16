@@ -19,7 +19,7 @@ public class MobIdle : MobBehavior {
 	public void execute_state()
 	{
 		if (timer_less_than_zero()) {
-			idle_timer = Random.Range(0.5f, 2);
+			idle_timer = Random.Range(0.5f, 0.75f);
 			should_end_idle = true;
 		} else {
 			if (!movment_script.should_rotate()) {
