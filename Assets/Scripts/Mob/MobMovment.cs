@@ -50,9 +50,9 @@ public class MobMovment : MonoBehaviour {
 	public bool should_rotate()
 	{
 		angle = Vector3.SignedAngle(new Vector3(transform.forward.x, transform.position.y, transform.forward.z), direction, Vector3.up);
-		//Debug.Log("Angle: " + angle + "angle - offset" + (Mathf.Abs(angle) - angle_offset));
-		//Debug.Log("Old condition: " + (angle >= angle_offset || angle <= -angle_offset));
-		//Debug.Log("New condition: " + ((Mathf.Abs(angle) - angle_offset) > 0.001f));
+		Debug.Log("Angle: " + angle + "angle - offset" + (Mathf.Abs(angle) - angle_offset));
+		Debug.Log("Old condition: " + (angle >= angle_offset || angle <= -angle_offset));
+		Debug.Log("New condition: " + ((Mathf.Abs(angle) - angle_offset) > 0.001f));
 		return (Mathf.Abs(angle) - angle_offset) > 0.001f;
 	}
 

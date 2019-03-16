@@ -25,16 +25,19 @@ public class MobPatrol : MobBehavior {
 			                               transform.position.x + moving_range,
 			                               transform.position.z - moving_range,
 			                               transform.position.z + moving_range);
-			//Debug.Log(new_point);
-			if (can_use_point(new_point)) {
-				destination = new_point;    //losowe punkty powinny być w pobliżu gracza, i bedą sprawdzane ray castem czy nie jest wolna droga do nich.
+			var test_point = transform.InverseTransformPoint(new_point);
+			Debug.Log(new_point);
+			Debug.DrawRay(transform.position, new_point, Color.black, 10.0f);
+			Debug.DrawRay(transform.position, get_destination(), Color.red, 10.0f);
+			if (can_use_point(test_point)) {
+				destination = new_point;
 				destination_set = true;
 				movment_script.reset_direction();
+				movment_script.set_destionation(destination);
 			}
-		} else {
-			movment_script.set_destionation(destination);
-			movment_script.move();
 		}
+	
+		movment_script.move();
 	}
 	public bool destination_reached(string str = "MobPatrol")
 	{
@@ -50,18 +53,10 @@ public class MobPatrol : MobBehavior {
 	{
 		float distance_to_target = Vector3.Distance (transform.position, point);
 		Vector3 direction_to_target = (point - transform.position).normalized;
+		
 		bool test = Physics.Raycast (transform.position, direction_to_target, distance_to_target, obstacle_mask);
 		Debug.Log("Raycast hit obsticle: " + test);
 		return !test;
-	}
-	public Vector3 get_random_point(float min_range_x, float max_range_x, float min_range_z = -20, float max_range_z = 20)
-	{
-		Vector3 random_point = new Vector3(Random.Range(min_range_x, max_range_x), transform.position.y, Random.Range(min_range_z, max_range_z));
-		
-		
-		
-		
-		return random_point;
 	}
 }
 } //namespace speed

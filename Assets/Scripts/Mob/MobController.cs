@@ -79,7 +79,7 @@ public class MobController : MonoBehaviour {
 		}
 		if (patrol_script.destination_reached("MobController") && patrol_script.destination_set) {
 			//Debug.Log("Set Idle state");
-			change_state(MobBehaviorState.EIDLE);
+			//change_state(MobBehaviorState.EIDLE);
 			patrol_script.destination_set = false;
 		} else {
 			patrol_script.execute_state();
