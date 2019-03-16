@@ -6,7 +6,8 @@ namespace Mobs {
 public class MobPatrol : MobBehavior {
 
 	public bool destination_set = false;
-
+	[Range(3.0f, 100.0f)]
+	public float moving_range = 3.0f;
 	// Use this for initialization
 	void Start () {
 		if (movment_script == null) {
@@ -19,7 +20,7 @@ public class MobPatrol : MobBehavior {
 		if (!destination_set || destination_reached()) {
 			//Debug.Log("Set destination");
 			movment_script.stop();
-			destination = get_random_point(-86, 167, 96, 145);//losowe punkty powinny być w pobliżu gracza, i bedą sprawdzane ray castem czy nie jest wolna droga do nich.
+			destination = get_new_destination();//losowe punkty powinny być w pobliżu gracza, i bedą sprawdzane ray castem czy nie jest wolna droga do nich.
 			destination_set = true;
 			movment_script.reset_direction();
 		} else {
@@ -27,7 +28,6 @@ public class MobPatrol : MobBehavior {
 			movment_script.move();
 		}
 	}
-
 	public bool destination_reached(string str = "MobPatrol")
 	{
 		Debug.Log(str + " destination reached: " + near_point(destination));
@@ -37,6 +37,16 @@ public class MobPatrol : MobBehavior {
 	public Vector3 get_destination()
 	{
 		return destination;
+	}
+
+	private Vector3 get_new_destination()
+	{
+		float max_range_x = transform.position.x + moving_range;
+		float min_range_x = transform.position.x + moving_range;
+		float max_range_z = transform.position.z + moving_range;
+		float min_range_z = transform.position.z + moving_range;
+
+		return new Vector3(Random.Range(min_range_x, max_range_x), transform.position.y, Random.Range(min_range_z, max_range_z));
 	}
 }
 } //namespace speed

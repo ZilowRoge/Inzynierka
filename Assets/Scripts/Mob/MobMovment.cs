@@ -11,7 +11,7 @@ public class MobMovment : MonoBehaviour {
 	public Vector3 destination;
 	public float angle;
 
-	private float angle_offset = 51;
+	private float angle_offset = 45;
 	private bool is_script_active = false;
 	private bool direction_found = false;
 	public void Start()
@@ -50,8 +50,10 @@ public class MobMovment : MonoBehaviour {
 	public bool should_rotate()
 	{
 		angle = Vector3.SignedAngle(new Vector3(transform.forward.x, transform.position.y, transform.forward.z), direction, Vector3.up);
-		
-		return angle >= angle_offset || angle <= -angle_offset;
+		//Debug.Log("Angle: " + angle + "angle - offset" + (Mathf.Abs(angle) - angle_offset));
+		//Debug.Log("Old condition: " + (angle >= angle_offset || angle <= -angle_offset));
+		//Debug.Log("New condition: " + ((Mathf.Abs(angle) - angle_offset) > 0.001f));
+		return (Mathf.Abs(angle) - angle_offset) > 0.001f;
 	}
 
 	public void stop()
@@ -92,7 +94,7 @@ public class MobMovment : MonoBehaviour {
 	{
 		direction = destination - new Vector3(transform.position.x, transform.position.y, transform.position.z);
 		angle = Vector3.SignedAngle(new Vector3(transform.forward.x, transform.position.y, transform.forward.z), direction, Vector3.up);
-		Debug.Log("Angle: " + angle);
+		
 	}
 }
 
