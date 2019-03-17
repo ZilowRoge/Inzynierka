@@ -42,12 +42,23 @@ public class MobMovment : MonoBehaviour {
 		return idle_movment_active;
 	}
 
+	public bool is_chase_active()
+	{
+		return chase_move_active;
+	}
+
 	/*! \fn void activate_patrol_move()
 	\brief activates patrol move it deactivates after reaching target
 	*/
 	public void activate_patrol_move()
 	{
 		patrol_movment_active = true;
+	}
+
+	public void deactivate_patrol_move()
+	{
+		patrol_movment_active = false;
+		
 	}
 
 	/*! \fn void activate_patrol_move()
@@ -125,74 +136,6 @@ public class MobMovment : MonoBehaviour {
 
 		return Vector3.Angle(transform.forward, target_dir) < 0.02f;
 	}
-
-
-
-
-
-
-/*
-	public void rotate()
-	{
-		if(should_rotate()) {
-			if(angle > 0) {
-				transform.Rotate(0, rotation_speed, 0);
-			} else if (angle < 0) {
-				transform.Rotate(0, -rotation_speed, 0);
-			}
-			//Debug.Log("Movment script active");
-		}
-	}
-
-	public bool should_rotate()
-	{
-		angle = Vector3.SignedAngle(new Vector3(transform.forward.x, transform.position.y, transform.forward.z), direction, Vector3.up);
-		Debug.Log("Angle: " + angle + "angle - offset" + (Mathf.Abs(angle) - angle_offset));
-		Debug.Log("Old condition: " + (angle >= angle_offset || angle <= -angle_offset));
-		Debug.Log("New condition: " + ((Mathf.Abs(angle) - angle_offset) > 0.001f));
-		return (Mathf.Abs(angle) - angle_offset) > 0.001f;
-	}
-
-	public void stop()
-	{
-		rigidbody.velocity = Vector3.zero;
-	}
-
-	public void set_active(bool active)
-	{
-		is_script_active = active;
-	}
-
-	public void set_destionation(Vector3 dest)
-	{
-		destination = dest;
-		find_direction();
-	}
-
-	public void set_point_to_rotate(Vector3 destination)
-	{
-		direction = destination - new Vector3(transform.position.x, transform.position.y, transform.position.z);
-		angle = Vector3.SignedAngle(new Vector3(transform.forward.x, transform.position.y, transform.forward.z), direction, Vector3.up);
-	}
-
-	public void reset_direction()
-	{
-		direction_found = false;
-	}
-
-	private void set_max_speed(float max_speed)
-	{
-		if(rigidbody.velocity.magnitude > max_speed) {
-			rigidbody.velocity = rigidbody.velocity.normalized * max_speed;
-		}
-	}
-
-	private void find_direction()
-	{
-		direction = destination - new Vector3(transform.position.x, transform.position.y, transform.position.z);
-		angle = Vector3.SignedAngle(new Vector3(transform.forward.x, transform.position.y, transform.forward.z), direction, Vector3.up);
-		
-	}*/
 }
 
 } //namespace Mobs

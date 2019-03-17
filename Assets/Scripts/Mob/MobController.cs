@@ -76,10 +76,11 @@ public class MobController : MonoBehaviour {
 	{
 		if (player_spotted()) {
 			change_state(MobBehaviorState.ECHASE);
+			patrol_script.stop_execution();
 		}
-		if (patrol_script.can_move_to_idle()) {
+		if (patrol_script.can_change_to_idle()) {
 			change_state(MobBehaviorState.EIDLE);
-		} else {
+		} else if(!player_spotted()) {
 			patrol_script.execute_state();
 		}
 	}
@@ -98,10 +99,11 @@ public class MobController : MonoBehaviour {
 
 	void chase()
 	{
-		/*if (chase_script.destination_reached()) {
+		if (chase_script.can_change_to_patrol() && !player_spotted()) {
 			change_state(MobBehaviorState.EPATROL);
-		}*/
-		chase_script.execute_state();
+		} else {
+			chase_script.execute_state();
+		}
 	}
 	
 	void try_attack()

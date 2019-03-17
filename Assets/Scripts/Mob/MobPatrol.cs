@@ -16,16 +16,12 @@ public class MobPatrol : MobBehavior {
 		movment_script = GetComponent<MobMovment>();
 	}
 
-	private void Update()
-	{
-		
-	}
 	private bool destination_reached()
 	{
 		return movment_script.is_target_reached();
 	}
 
-	public bool can_move_to_idle()
+	public bool can_change_to_idle()
 	{
 		bool move_to_idle = destination_reached() && active_target;
 		if (move_to_idle) {
@@ -50,13 +46,19 @@ public class MobPatrol : MobBehavior {
 			movment_script.activate_patrol_move();
 		}
 	}
+
+	public void stop_execution()
+	{
+		movment_script.deactivate_patrol_move();
+		active_target = false;
+	}
 	public Vector3 get_destination()
 	{
 		return target.position;
 	}
 	private bool validate_point(Vector3 point)
 	{
-		//Debug.DrawLine(transform.position, point, Color.red, 10.0f);
+		Debug.DrawLine(transform.position, point, Color.red, 10.0f);
 		return !Physics.Linecast(transform.position, point) &&
 		       Vector3.Distance(transform.position, point) > moving_range/2;
 	}
