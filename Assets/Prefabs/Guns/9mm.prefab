@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114707341814974410}
   m_Layer: 0
   m_Name: 9mm
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_collision_count: 1
   current_collision_count: 0
+  damage: 0
 --- !u!136 &136155085248013350
 CapsuleCollider:
   m_ObjectHideFlags: 1

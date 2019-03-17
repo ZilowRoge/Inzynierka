@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114135360445640128}
   m_Layer: 0
   m_Name: 7.62mm
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +93,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1220658119092060}
   serializedVersion: 2
-  m_Mass: 0.1
+  m_Mass: 0.01
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -114,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_collision_count: 1
   current_collision_count: 0
+  damage: 0
 --- !u!114 &114980721411896874
 MonoBehaviour:
   m_ObjectHideFlags: 1
