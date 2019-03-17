@@ -149,6 +149,7 @@ public class WeaponBehavior : Inventory.Items.Item {
 	{
 		GameObject obj;
 		obj = Instantiate(bullet, shot_start.transform.position, new Quaternion(0,0,0,0));
+		obj.GetComponent<BulletBehavior>().set_damage(damage);
 		obj.GetComponent<Rigidbody>().AddForce(shot_start.transform.up * force);	
 	}
 

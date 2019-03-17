@@ -27,8 +27,7 @@ public class PlayerUI : MonoBehaviour {
 		/*for(int i = 0; i < 3; i++)
 		{
 			list_of_texts[i].text = inventory.get_ammo_amount(i) + "";
-		}*/
-
+		}*/	
 		status_bars[0].value = player_statisctic.curren_health_points;
 		status_bars[1].value = player_statisctic.current_hunger;
 		status_bars[2].value = player_statisctic.current_thirst;

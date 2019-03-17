@@ -14,12 +14,12 @@ public class MobController : MonoBehaviour {
 	public MobIdle idle_script;
 	public MobChase chase_script;
 	public Animator animator;
-
-	public GameObject attack_target;
+	public MobStats mob_stats;
 
 	public FieldOfView mob_view;
 	// Use this for initialization
 	void Start () {
+		mob_stats = GetComponent<MobStats>();
 		patrol_script = GetComponent<MobPatrol>();
 		idle_script = GetComponent<MobIdle>();
 		chase_script = GetComponent<MobChase>();
@@ -32,6 +32,10 @@ public class MobController : MonoBehaviour {
 	void Update() 
 	{
 		try_attack();
+
+		if (mob_stats.health <= 0) {
+			Destroy(this.gameObject);
+		}
 	}
 
 	IEnumerator wake_mob(float delay)
@@ -70,7 +74,7 @@ public class MobController : MonoBehaviour {
 	{
 		if (player_spotted()) {
 			change_state(MobBehaviorState.ECHASE);
-			//patrol_script.stop_execution();
+			patrol_script.stop_execution();
 		}
 		if (patrol_script.can_change_to_idle()) {
 			change_state(MobBehaviorState.EIDLE);
@@ -102,9 +106,9 @@ public class MobController : MonoBehaviour {
 	
 	void try_attack()
 	{
-		targets_in_attack_range();
-		if (attack_target != null)
+		if (is_target_in_range())
 		{
+			Debug.Log("Start animation");
 			animator.SetBool("Attack", true);
 		} else {
 			animator.SetBool("Attack", false);
@@ -115,20 +119,19 @@ public class MobController : MonoBehaviour {
 	{
 		return mob_view.target != null;
 	}
-	private void targets_in_attack_range()
+	private bool is_target_in_range()
 	{
-		attack_target = null;
-		Collider[] targets = Physics.OverlapSphere(transform.position, 1.5f/*attack range*/, mob_view.target_mask);
-		foreach(Collider col in targets)
-		{
-			if (col.gameObject.tag == "Player") {
-				attack_target = col.gameObject;
-				break;
-			}
-		}
+		//Debug.Log("Distance : " + Vector3.Distance(mob_view.target.position, transform.position));
+		return mob_view.target != null && Vector3.Distance(mob_view.target.position, transform.position) <= 2.5f;
 	}
 
-
+	void OnCollisionEnter(Collision other)
+	{
+		if (other.collider.tag == "Bullet") {
+			mob_stats.health -= other.collider.gameObject.GetComponent<Weapon.BulletBehavior>().get_damage();
+			Debug.Log("Health left: " + mob_stats.health);
+		}
+	}
 }
 
 } //namespace Mobs

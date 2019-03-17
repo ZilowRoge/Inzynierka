@@ -32,18 +32,20 @@ public class MobPatrol : MobBehavior {
 
 	public void execute_state()
 	{
-		if (!active_target) {
-			var new_position = get_random_point(moving_range);
-			if (validate_point(new_position)) {
-				//Debug.Log("Target assigned");
-				target.position = new_position;
-				active_target = true;
+		if (target != null) {
+			if (!active_target) {
+				var new_position = get_random_point(moving_range);
+				if (validate_point(new_position)) {
+					//Debug.Log("Target assigned");
+					target.position = new_position;
+					active_target = true;
+				}
 			}
-		}
 
-		if (!movment_script.is_patrol_move_active() && active_target) {
-			movment_script.look_for(target);
-			movment_script.activate_patrol_move();
+			if (!movment_script.is_patrol_move_active() && active_target) {
+				movment_script.look_for(target);
+				movment_script.activate_patrol_move();
+			}
 		}
 	}
 

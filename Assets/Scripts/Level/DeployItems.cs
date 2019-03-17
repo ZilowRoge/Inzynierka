@@ -20,9 +20,9 @@ public class DeployItems : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		for (int i = 0; i < deploy_points.Count; i++) {
+		/*for (int i = 0; i < deploy_points.Count; i++) {
 			deploy(deploy_points[i].gameObject.transform.position);
-		}
+		}*/
 	}
 	
 	// Update is called once per frame

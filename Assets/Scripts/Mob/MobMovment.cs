@@ -24,7 +24,11 @@ public class MobMovment : MonoBehaviour {
 		//TODO: Uncomment line below
 		//rotate();
 		if (patrol_movment_active) {
-			move_to_target();
+			patrol_move_to_target();
+		}
+
+		if (chase_move_active) {
+			chase_move_to_target();
 		}
 
 		if (idle_movment_active) {
@@ -83,23 +87,31 @@ public class MobMovment : MonoBehaviour {
 		//Debug.Log("Look_for: " + target.position);
 		this.target = target;
 	}
+	public void patrol_move_to_target()
+	{
+		move_to_target();
+		patrol_movment_active = !is_target_reached();
+	}
 
+	public void chase_move_to_target()
+	{
+		move_to_target();
+		chase_move_active = !is_target_reached();
+	}
 	/*! \fn void move_to_target()
 	\brief moves transform for a certain step if reaches target deactivates patrol move
 	*/
-	public void move_to_target()
+	private void move_to_target()
 	{
 		rotate();
 
 		if(is_facing_target()) {
-			Debug.Log("LookAt: " + target);
+			//Debug.Log("LookAt: " + target);
 			transform.LookAt(target);
 		}
 
 		float step =  speed * Time.deltaTime;
 		transform.position = Vector3.MoveTowards(transform.position, target.position, step);
-		patrol_movment_active = !is_target_reached();
-		chase_move_active = !is_target_reached();
 	}
 
 	/*! \fn void move_to_target()

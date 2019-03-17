@@ -14,20 +14,26 @@ public class PlayerManager : MonoBehaviour {
 	public PlayerInventory player_inventory;
 	public WeaponBehavior weapon_script;
 	public PlayerInventoryUI inventory_ui;
-
-
+	public PlayerStats player_stats;
 
 	bool fire_pressed = false;
 
 	// Use this for initialization
 	void Start () {
-		
+		player_stats = GetComponent<PlayerStats>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (fire_pressed) {
 			weapon_script.fire();
+		}
+
+		if (player_stats.curren_health_points <= 0) {
+			player_stats.curren_health_points = player_stats.max_health_points;
+			player_stats.current_hunger = 0;
+			player_stats.current_thirst = 0;
+			transform.position = new Vector3(0,10,0);
 		}
 	}
 
@@ -133,6 +139,20 @@ public class PlayerManager : MonoBehaviour {
 	public void previous_item()
 	{
 		inventory_ui.select_previous_item();
+	}
+
+	/// <summary>
+	/// OnCollisionEnter is called when this collider/rigidbody has begun
+	/// touching another rigidbody/collider.
+	/// </summary>
+	/// <param name="other">The Collision data associated with this collision.</param>
+	void OnCollisionEnter(Collision other)
+	{
+		if (other.collider.tag == "MobAttack") {
+			
+			player_stats.curren_health_points -= other.collider.GetComponentInParent<Mobs.MobStats>().damage;
+			Debug.Log("Hited health left: " + player_stats.curren_health_points);
+		}
 	}
 }
 

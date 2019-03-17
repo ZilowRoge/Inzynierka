@@ -10,7 +10,12 @@ public class MobChase : MobBehavior {
 		mob_view = GetComponent<FieldOfView>();
 		movment_script = GetComponent<MobMovment>();
 	}
-
+	void Update()
+	{
+		if (movment_script.is_chase_active()) {
+			target = mob_view.target;
+		}
+	}
 	public void execute_state()
 	{
 		if (!movment_script.is_chase_active() && mob_view.target != null) {
@@ -21,7 +26,7 @@ public class MobChase : MobBehavior {
 	}
 	public bool can_change_to_patrol()
 	{
-		return Vector3.Distance(transform.position, target.position) > mob_view.view_range;
+		return target == null || Vector3.Distance(transform.position, target.position) > mob_view.view_range;
 	}
 
 }

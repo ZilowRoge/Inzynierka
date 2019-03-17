@@ -12,9 +12,16 @@ public class BulletBehavior : MonoBehaviour {
 	float live_time = 0;
 
 	float max_live_time = 5;
-	// Use this for initialization
-	void Start () {
-		
+	public float damage;
+
+	public void set_damage(float dmg)
+	{
+		damage = dmg;
+	}
+
+	public float get_damage()
+	{
+		return damage;
 	}
 	
 	// Update is called once per frame
@@ -26,17 +33,12 @@ public class BulletBehavior : MonoBehaviour {
 		if(live_time >= max_live_time){
 			live_time = 0;
 			Destroy(this.gameObject);
-		
-		}
+				}
 	}
 
 	void OnCollisionEnter(Collision other)
 	{
 		current_collision_count++;
-		if(other.collider.tag == "Target")
-		{
-			other.transform.parent.gameObject.GetComponent<TargetBehavior>().on_hit();
-		}
 		if(current_collision_count >= max_collision_count)
 		{
 			GameObject.Destroy(this.gameObject);
