@@ -8,7 +8,7 @@ public class MobBehavior : MonoBehaviour {
 	public MobMovment movment_script;
 	public float location_offset = 1.5f;
 
-	public Transform target;
+	public Transform target = null;
 
 	void Start()
 	{

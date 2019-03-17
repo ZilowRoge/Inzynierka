@@ -114,7 +114,6 @@ GameObject:
   - component: {fileID: 114913817703500976}
   - component: {fileID: 114788920450987404}
   - component: {fileID: 95370444617104042}
-  - component: {fileID: 114396644321266172}
   m_Layer: 0
   m_Name: Mob1
   m_TagString: Untagged
@@ -159,8 +158,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1862451769477374}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3, y: 1, z: -1.6}
+  m_LocalRotation: {x: -0, y: 0.26870725, z: -0, w: 0.9632219}
+  m_LocalPosition: {x: -8.286301, y: 1.74, z: -0.33402598}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4354037469649134}
@@ -169,7 +168,7 @@ Transform:
   - {fileID: 4761538037986162}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 31.175001, z: 0}
 --- !u!4 &4249700502790404
 Transform:
   m_ObjectHideFlags: 1
@@ -464,7 +463,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1862451769477374}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 06f34e174e0f4514ea889ddd78373c8b, type: 2}
   m_CullingMode: 0
@@ -528,17 +527,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   active_target: 0
---- !u!114 &114396644321266172
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1862451769477374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114788920450987404
 MonoBehaviour:
   m_ObjectHideFlags: 1

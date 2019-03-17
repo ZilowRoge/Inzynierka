@@ -21,11 +21,6 @@ public class Common : MonoBehaviour {
 		initialize_ammo_type_to_string();
 		initialize_ammo_type_to_path();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	static void initialize_ammo_type_to_string()
 	{

@@ -23,7 +23,7 @@ public class MobMovment : MonoBehaviour {
 	{
 		//TODO: Uncomment line below
 		//rotate();
-		if (patrol_movment_active || chase_move_active) {
+		if (patrol_movment_active) {
 			move_to_target();
 		}
 
@@ -89,9 +89,10 @@ public class MobMovment : MonoBehaviour {
 	*/
 	public void move_to_target()
 	{
-		rotate_to_target();
+		rotate();
 
 		if(is_facing_target()) {
+			Debug.Log("LookAt: " + target);
 			transform.LookAt(target);
 		}
 
@@ -106,13 +107,7 @@ public class MobMovment : MonoBehaviour {
 	*/
 	public void rotate_to_target()
 	{
-		Vector3 target_dir = target.position - transform.position;
-
-		float step = rotation_speed * Time.deltaTime;
-
-		Vector3 newDir = Vector3.RotateTowards(transform.forward, target_dir, step, 0.0f);
-		Debug.DrawRay(transform.position, newDir, Color.red);
-		transform.rotation = Quaternion.LookRotation(newDir);
+		rotate();
 		idle_movment_active = !is_facing_target();
 	}
 
@@ -135,6 +130,17 @@ public class MobMovment : MonoBehaviour {
 		//Debug.Log("Mob movment: Angle between vectors" + Vector3.Angle(transform.forward, target_dir));
 
 		return Vector3.Angle(transform.forward, target_dir) < 0.02f;
+	}
+
+	private void rotate()
+	{
+		Vector3 target_dir = target.position - transform.position;
+
+		float step = rotation_speed * Time.deltaTime;
+
+		Vector3 newDir = Vector3.RotateTowards(transform.forward, target_dir, step, 0.0f);
+		Debug.DrawRay(transform.position, newDir, Color.red);
+		transform.rotation = Quaternion.LookRotation(newDir);
 	}
 }
 

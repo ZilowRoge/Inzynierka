@@ -28,7 +28,7 @@ public class MobIdle : MobBehavior {
 	public void execute_state()
 	{
 		if (timer_less_than_zero() && !rotation_point_set) {
-			idle_timer = Random.Range(1.0f, 1.75f);
+			idle_timer = Random.Range(2.0f, 2.75f);
 		}
 		if (!rotation_point_set) {
 			Vector3 new_point = get_random_point(point_range);

@@ -31,12 +31,6 @@ public class MobController : MonoBehaviour {
 
 	void Update() 
 	{
-		if(player_spotted())
-		{
-			patrol_script.set_destination(mob_view.target.position);
-			idle_script.set_destination(mob_view.target.position);
-			chase_script.set_destination(mob_view.target.position);
-		}
 		try_attack();
 	}
 
@@ -76,7 +70,7 @@ public class MobController : MonoBehaviour {
 	{
 		if (player_spotted()) {
 			change_state(MobBehaviorState.ECHASE);
-			patrol_script.stop_execution();
+			//patrol_script.stop_execution();
 		}
 		if (patrol_script.can_change_to_idle()) {
 			change_state(MobBehaviorState.EIDLE);
