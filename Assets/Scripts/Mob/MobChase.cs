@@ -14,22 +14,13 @@ public class MobChase : MobBehavior {
 		}
 	}
 
-	public bool reached_target()
-	{
-		return near_point(destination);
-	}
 	public void execute_state()
 	{
+		/* TODO REWRITE THIS
 		if (!reached_target()) {
 			movment_script.set_destionation(destination);
 			movment_script.move();
-		}
-	}
-
-	public bool destination_reached(string str = "MobChase")
-	{
-	//	Debug.Log(str + "destination reached: " + near_point(destination));
-		return near_point(destination);
+		}*/
 	}
 
 }

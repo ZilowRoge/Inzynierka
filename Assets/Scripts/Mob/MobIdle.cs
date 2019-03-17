@@ -5,11 +5,20 @@ using UnityEngine;
 namespace Mobs {
 public class MobIdle : MobBehavior {
 	public float idle_timer = 0.0f;
-	public bool should_end_idle = false;
+
+	[Range(3.0f, 100.0f)]
+	public float point_range = 20.0f;
+
+	public bool rotation_point_set = false;
 	void Start()
 	{
-		if (movment_script == null) {
-			movment_script = GetComponent<MobMovment>();
+		movment_script = GetComponent<MobMovment>();
+	}
+
+	void Update()
+	{
+		if (!timer_less_than_zero()) {
+			idle_timer -= Time.deltaTime;
 		}
 	}
 	public bool timer_less_than_zero()
@@ -18,17 +27,30 @@ public class MobIdle : MobBehavior {
 	}
 	public void execute_state()
 	{
-		if (timer_less_than_zero()) {
-			idle_timer = Random.Range(0.5f, 0.75f);
-			should_end_idle = true;
-		} else {
-			if (!movment_script.should_rotate()) {
-				//maybe add here rotation speed setter
-				destination = get_random_point(-86, 167, 96, 145);
-				movment_script.set_point_to_rotate(destination);
-			}
-			idle_timer -= Time.deltaTime;
+		if (timer_less_than_zero() && !rotation_point_set) {
+			idle_timer = Random.Range(1.0f, 1.75f);
 		}
+		if (!rotation_point_set) {
+			Vector3 new_point = get_random_point(point_range);
+			if (validate_point(new_point)) {
+				target.position = new_point;
+				rotation_point_set = true;
+			}
+		}
+
+		if (!movment_script.is_idle_active()) {
+			movment_script.look_for(target);
+			movment_script.activate_idle_move();
+		} else if (movment_script.is_facing_target()) {
+			rotation_point_set = false;
+		}
+	}
+
+	private bool validate_point(Vector3 point)
+	{
+		Vector3 direction = transform.position - point;
+		return Vector3.Angle(transform.forward, direction) > 60 &&
+		       Vector3.Distance(transform.position, point) > point_range*0.75;
 	}
 }
 } // namespace Mobs
