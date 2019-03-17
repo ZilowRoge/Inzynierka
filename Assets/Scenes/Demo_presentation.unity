@@ -214,31 +214,6 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 803514398}
-    - target: {fileID: 114056885067797580, guid: 539362214e0a1444484f1bebb3d525fc,
-        type: 2}
-      propertyPath: health
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 114056885067797580, guid: 539362214e0a1444484f1bebb3d525fc,
-        type: 2}
-      propertyPath: attack
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114056885067797580, guid: 539362214e0a1444484f1bebb3d525fc,
-        type: 2}
-      propertyPath: attack_speed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 54353873482921630, guid: 539362214e0a1444484f1bebb3d525fc,
-        type: 2}
-      propertyPath: m_Mass
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 114056885067797580, guid: 539362214e0a1444484f1bebb3d525fc,
-        type: 2}
-      propertyPath: damage
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 539362214e0a1444484f1bebb3d525fc, type: 2}
   m_IsPrefabParent: 0
