@@ -4,11 +4,14 @@ using UnityEngine;
 using System;
 using Weapon;
 using Player;
+using Inventory;
 
 public class ManageInputs : MonoBehaviour {
 
 	public PlayerMovment player_movment;
 	public PlayerManager player_manager;
+
+	public PlayerInventoryUI player_inventory;
 
 	private bool inventory_opened = false;
 	private float ui_key_down_timer = 0;
@@ -91,21 +94,21 @@ public class ManageInputs : MonoBehaviour {
 			ui_key_down_timer += Time.deltaTime;
 		}
 		if (Input.GetKeyUp("i") && inventory_opened && ui_key_down_timer >= 0.5) {
-			player_manager.close_inventory();
+			player_inventory.close_inventory();
 			inventory_opened = false;
 			ui_key_down_timer = 0;
 		}
 
 		if (Input.GetKeyUp("i") && !inventory_opened && ui_key_down_timer >= 0.5) {
-			player_manager.open_inventory();
+			player_inventory.open_inventory();
 			inventory_opened = true;
 			ui_key_down_timer = 0;
 		}
 
-		if (Input.GetKeyDown(".")) {
-			player_manager.next_item();
-		} else if (Input.GetKeyDown(",")) {
-			player_manager.previous_item();
+		if (Input.GetKeyDown("[")) {
+			//player_inventory.next_item();
+		} else if (Input.GetKeyDown("]")) {
+			//player_inventory.previous_item();
 		}
 	}
 }

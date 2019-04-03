@@ -1,12 +1,10 @@
 namespace Weapon{
 public enum  EAmmoType{
-		Calliber_45,
 		Calliber_5,
 		Calliber_9mm,
 
 		Calliber_762mm,
-		Calliber_556mm,
-		Calliber_30mm
+		Calliber_556mm
 	}
 
 public class  Pair<T1,T2>{

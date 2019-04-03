@@ -82,7 +82,7 @@ public class PlayerManager : MonoBehaviour {
 		int ammo_type = weapon_script.get_ammo_type();
 		int ammo_amount = player_inventory.get_ammo_amount(ammo_type);
 		int ammo_used = weapon_script.reload(ammo_amount);
-		player_inventory.set_ammo_amount(ammo_type, ammo_amount - ammo_used);
+		player_inventory.set_ammo_amount(ammo_type, ammo_used);
 	}
 
 	//Backpack scripts
@@ -116,9 +116,9 @@ public class PlayerManager : MonoBehaviour {
 			player_inventory.pick_up(item);
 		}
 	}
-
-	//UI scripts
-
+	//TODO:
+	//UI scripts << to trzeba przenieśc do input manager 
+/* 
 	public void open_inventory()
 	{
 		Debug.Log("Open UI");
@@ -140,7 +140,7 @@ public class PlayerManager : MonoBehaviour {
 	{
 		inventory_ui.select_previous_item();
 	}
-
+*/
 	/// <summary>
 	/// OnCollisionEnter is called when this collider/rigidbody has begun
 	/// touching another rigidbody/collider.

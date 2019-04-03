@@ -28,7 +28,7 @@ public class Common : MonoBehaviour {
 		ammo_type_to_string[EAmmoType.Calliber_762mm] = "Ammobox 7.62mm";
 		ammo_type_to_string[EAmmoType.Calliber_556mm] = "Ammobox 5.56mm";
 		ammo_type_to_string[EAmmoType.Calliber_5] = "Ammobox .50";
-		ammo_type_to_string[EAmmoType.Calliber_45] = "Ammobox .45";
+		//ammo_type_to_string[EAmmoType.Calliber_45] = "Ammobox .45";
 	}
 
 	static void initialize_ammo_type_to_path()
@@ -37,6 +37,6 @@ public class Common : MonoBehaviour {
 		ammo_type_to_path[EAmmoType.Calliber_762mm] = "Assets/Prefabs/Ammo/Ammobox762mm.prefab";
 		ammo_type_to_path[EAmmoType.Calliber_556mm] = "Assets/Prefabs/Ammo/Ammobox556mm.prefab";
 		ammo_type_to_path[EAmmoType.Calliber_5] = "Assets/Prefabs/Ammo/Ammobox50.prefab";
-		ammo_type_to_path[EAmmoType.Calliber_45] = "Assets/Prefabs/Ammo/Ammobo45.prefab";
+		//ammo_type_to_path[EAmmoType.Calliber_45] = "Assets/Prefabs/Ammo/Ammobo45.prefab";
 	}
 }

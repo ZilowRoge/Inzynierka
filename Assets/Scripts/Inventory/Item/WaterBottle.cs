@@ -6,7 +6,6 @@ namespace Inventory {
 namespace Items {
 public class WaterBottle : Item {
 	public float thirst_heal = Common.water_bottle_heal;
-
 }
 }
 }

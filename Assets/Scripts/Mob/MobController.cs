@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace Mobs {
 public class MobController : MonoBehaviour {
 	public enum MobBehaviorState {
@@ -67,7 +68,7 @@ public class MobController : MonoBehaviour {
 	}
 	void change_state(MobBehaviorState state)
 	{
-		Debug.Log("Mob Controller: Change state to: " + state.ToString());
+		//Debug.Log("Mob Controller: Change state to: " + state.ToString());
 		this.state = state;
 	}
 	void patrol ()
