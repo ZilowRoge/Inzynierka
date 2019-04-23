@@ -10,6 +10,8 @@ public class PlayerStats : MonoBehaviour {
 	public float max_thirst;
 	public float current_thirst;
 
+	public float max_weight = 3;
+
 	float timer = 0;
 
 	// Use this for initialization

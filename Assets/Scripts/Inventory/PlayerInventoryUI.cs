@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
@@ -7,43 +8,78 @@ using Weapon;
 
 namespace Inventory{
 public class PlayerInventoryUI : MonoBehaviour {
-    
+	public Action<int> drop_item_callback;
+	public Action<int> use_item_callback;
 	public List<Text> items_amount_ui = new List<Text>();
 	public GameObject inventory_ui;
 	public UnityEngine.UI.Image highlight;
 	private int selected_item;
 	private float current_highlight_position;
 	List<int> items_amount = new List<int>();
+	public bool debug = true;
+
+	public Text input_button;
 	void Awake() {
 		for (int i = 0; i < 7; i++) {
 			items_amount.Add(0);
 		}
 		update_inventory();
+		current_highlight_position = 14;//highlight.rectTransform.position.y;
+	}
+
+	private void Update()
+	{
+		if (debug) {
+			if (Input.GetButton("XboxX")) input_button.text = "X";
+			if (Input.GetButton("XboxY")) input_button.text = "Y";
+			if (Input.GetButton("XboxA")) input_button.text = "A";
+			if (Input.GetButton("XboxB")) input_button.text = "B";
+			if (Input.GetButton("LeftBumper")) input_button.text = "LBumper";
+			if (Input.GetButton("RightBumper")) input_button.text = "RBumper";
+			float left_trigger = Input.GetAxis("LeftTrigger");
+			float right_trigger = Input.GetAxis("RightTrigger");
+			float cross_axis = Input.GetAxis("DPadVertical");
+			if (left_trigger > 0) input_button.text = "LeftTrigger" + left_trigger.ToString();
+			if (right_trigger > 0) input_button.text = "RightTrigger" + right_trigger.ToString();
+			if (cross_axis != 0) input_button.text = "DPadV " + cross_axis.ToString();
+		}
+		//Debug.Log("Curren pos = " + current_highlight_position);
+		
+		//if (Input.GetButton("XboxX")) input_button.text = "X";
 	}
 
 	private void update_inventory()
 	{
 		int i = 0;
 		foreach (int item_amount in items_amount) {
+			//Debug.Log("Add to " + items_amount_ui[i].name);
 			items_amount_ui[i++].text = item_amount.ToString();
 		}
 	}
-
-	public void update_first_aid_amount()
+	public void set_drop_callback(Action<int> action)
 	{
-		items_amount[0]++;
+		drop_item_callback += action;
+	}
+
+	public void set_use_callback(Action<int> action)
+	{
+		use_item_callback += action;
+	}
+	public void update_first_aid_amount(int amount)
+	{
+		items_amount[0] += amount;
 		update_inventory();
 	}
 
-	public void update_watter_bottle()
+	public void update_watter_bottle(int amount)
 	{
-		items_amount[1]++;
+		items_amount[1] += amount;
 		update_inventory();
 	}
 
-	public void update_food_ration()
+	public void update_food_ration(int amount)
 	{
-		items_amount[2]++;
+		items_amount[2] += amount;
 		update_inventory();
 	}
 
@@ -67,6 +103,12 @@ public class PlayerInventoryUI : MonoBehaviour {
 		}
 		update_inventory();
 	}
+
+	public bool is_active()
+	{
+		//Debug.Log("Is active = " + inventory_ui.activeSelf);
+		return inventory_ui.activeSelf;
+	}
 	public void open_inventory()
 	{
 		inventory_ui.SetActive(true);
@@ -76,6 +118,41 @@ public class PlayerInventoryUI : MonoBehaviour {
 	{
 		inventory_ui.SetActive(false);
 	}
+	public void next_item()
+	{
+		if (selected_item < 6) {
+			selected_item++;
+			set_highlight_position(current_highlight_position - 3);
+		}
+	}
+
+	public void previous_item()
+	{
+		if (selected_item > 0) {
+			selected_item--;
+			set_highlight_position(current_highlight_position + 3);
+		}
+	}
+
+	public void drop_item()
+	{
+		if (items_amount[selected_item] > 0) {
+			drop_item_callback(selected_item);
+		}
+	}
+
+	public void use_item()
+	{
+		if (items_amount[selected_item] > 0) {
+			use_item_callback(selected_item);
+		}
+	}
+	private void set_highlight_position(float pos_y)
+	{
+		highlight.GetComponent<RectTransform>().localPosition = new Vector3(0,pos_y,0);
+		current_highlight_position = pos_y;
+	}
+
 /*/
 	public void update_inventory(List<Items.Item> items)
 	{

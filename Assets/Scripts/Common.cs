@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Weapon;
 public class Common : MonoBehaviour {
-
+	public static GameObject ammobox5;
+	public static GameObject ammobox9mm;
+	public static GameObject ammobox556mm;
+	public static GameObject ammobox762mm;
 	public static Dictionary<EAmmoType, string> ammo_type_to_string = new Dictionary<EAmmoType, string>();
 	public static Dictionary<EAmmoType, string> ammo_type_to_path = new Dictionary<EAmmoType, string>();
 	public static int max_ammo = 30;
@@ -14,6 +17,8 @@ public class Common : MonoBehaviour {
 	public static float water_bottle_heal = 10.0f;
 
 	public static float first_aid_heal = 10.0f;
+
+	public static float hunger_heal = 30.0f;
 
 
 	// Use this for initialization
@@ -38,5 +43,28 @@ public class Common : MonoBehaviour {
 		ammo_type_to_path[EAmmoType.Calliber_556mm] = "Assets/Prefabs/Ammo/Ammobox556mm.prefab";
 		ammo_type_to_path[EAmmoType.Calliber_5] = "Assets/Prefabs/Ammo/Ammobox50.prefab";
 		//ammo_type_to_path[EAmmoType.Calliber_45] = "Assets/Prefabs/Ammo/Ammobo45.prefab";
+	}
+
+	public static GameObject get_object_from_type(Weapon.EAmmoType type){
+	//	Debug.Log(path);
+		GameObject prefab = null;
+		switch (type)
+		{
+			case Weapon.EAmmoType.Calliber_5:
+			prefab = ammobox5;
+			break;
+			case Weapon.EAmmoType.Calliber_9mm:
+			prefab = ammobox9mm;
+			break;
+			case Weapon.EAmmoType.Calliber_762mm:
+			prefab = ammobox762mm;
+			break;
+			case Weapon.EAmmoType.Calliber_556mm:
+			prefab = ammobox556mm;
+			break;
+			default:
+			break;
+		}
+		return prefab; 
 	}
 }

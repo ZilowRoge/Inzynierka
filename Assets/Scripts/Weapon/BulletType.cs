@@ -1,5 +1,5 @@
 namespace Weapon{
-public enum  EAmmoType{
+public enum EAmmoType{
 		Calliber_5,
 		Calliber_9mm,
 

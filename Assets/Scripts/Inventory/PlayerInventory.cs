@@ -1,39 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using Weapon;
 using Player;
 
 namespace Inventory{
 public class PlayerInventory : MonoBehaviour {
-	public List<Items.Item> items_in_backpack = new List<Items.Item>();
+	private PlayerStats player_stats;
+	public Transform drop_point;
+	public ItemFactory item_factory;
 	public PlayerInventoryUI inventory_ui;
 	public Dictionary<EAmmoType, int> ammo_amount;
 	public int first_aid_amount = 0;
 	public int water_bottle_amount = 0;
+
+	public int food_ration_amount = 0;
+
+	public float current_weight = 0;
 	
 	// Use this for initialization
 	void Start () {
+		player_stats = GetComponent<PlayerStats>();
 		ammo_amount = create_dictionary();
 		inventory_ui = GetComponent<PlayerInventoryUI>();
+		inventory_ui.set_drop_callback(drop);
+		inventory_ui.set_use_callback(use);
+		item_factory = GameObject.Find("GameManager").GetComponent<ItemFactory>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	}
-
+	public float get_current_weight()
+	{
+		return current_weight;
+	}
 	public void pick_up(Items.Item item)
 	{
-		//items_in_backpack.Add(item);
+		current_weight += item.weight;
 		switch (item.name) {
 			case "First aid":
 			first_aid_amount++;
-			inventory_ui.update_first_aid_amount();
+			inventory_ui.update_first_aid_amount(1);
 			break;
 			case "Water Bottle":
 			water_bottle_amount++;
-			inventory_ui.update_watter_bottle();
+			inventory_ui.update_watter_bottle(1);
+			break;
+			case "Food rations":
+			food_ration_amount++;
+			inventory_ui.update_food_ration(1);
 			break;
 			default:
 			break;
@@ -42,9 +58,75 @@ public class PlayerInventory : MonoBehaviour {
 	public void pick_up(Items.AmmoBox ammobox)
 	{
 		ammo_amount[ammobox.ammo_type] += ammobox.ammo_amount;
+		Debug.Log("Ammo type = " + ammobox.ammo_type);
 		inventory_ui.update_ammo(ammobox.ammo_type, ammobox.ammo_amount);
 	}
 
+	public void drop(int selected_item)
+	{
+		Debug.Log("DROP");
+		switch (selected_item) {
+			case 0:
+			first_aid_amount--;
+			inventory_ui.update_first_aid_amount(-1);
+			item_factory.create_first_aid(drop_point.position);
+			break;
+			case 1:
+			water_bottle_amount--;
+			inventory_ui.update_watter_bottle(-1);
+			item_factory.create_watter_bottle(drop_point.position);
+			break;
+			case 2:
+			food_ration_amount--;
+			inventory_ui.update_food_ration(-1);
+			item_factory.create_food_ration(drop_point.position);
+			break;
+			case 3: //Calliber_9mm
+			drop_ammo(EAmmoType.Calliber_9mm, 30);
+			break;
+			case 4: //Calliber_5
+			drop_ammo(EAmmoType.Calliber_5, 30);
+			break;
+			case 5: //Calliber_762mm
+			drop_ammo(EAmmoType.Calliber_762mm, 30);
+			break;
+			case 6: //Calliber_556mm
+			drop_ammo(EAmmoType.Calliber_556mm, 30);
+			break;
+			default:
+			break;
+		}
+	}
+
+	public void use(int selected_item)
+	{
+		switch (selected_item) {
+			case 0:
+			first_aid_amount--;
+			inventory_ui.update_first_aid_amount(-1);
+			player_stats.curren_health_points += Common.first_aid_heal;
+			break;
+			case 1:
+			water_bottle_amount--;
+			inventory_ui.update_watter_bottle(-1);
+			player_stats.current_thirst += Common.water_bottle_heal;
+			break;
+			case 2:
+			food_ration_amount--;
+			inventory_ui.update_food_ration(-1);
+			player_stats.current_hunger += Common.hunger_heal;
+			break;
+			default:
+			break;
+		}
+	}
+
+	private void drop_ammo(EAmmoType type, int amount)
+	{
+		ammo_amount[type] -= amount;
+		inventory_ui.update_ammo(type, -amount);
+		item_factory.create_ammo(drop_point.position, type, amount);
+	}
 	public int get_ammo_amount(int ammo)
 	{
 		EAmmoType ammo_t = (EAmmoType)ammo;
@@ -64,9 +146,9 @@ public class PlayerInventory : MonoBehaviour {
 	{
 		Dictionary<EAmmoType, int> ammo_amount = new Dictionary<EAmmoType, int>();
 		ammo_amount[EAmmoType.Calliber_9mm] = 0;
+		ammo_amount[EAmmoType.Calliber_5] = 0;
 		ammo_amount[EAmmoType.Calliber_762mm] = 0;
 		ammo_amount[EAmmoType.Calliber_556mm] = 0;
-		ammo_amount[EAmmoType.Calliber_5] = 0;
 		return ammo_amount;
 	}
 /*

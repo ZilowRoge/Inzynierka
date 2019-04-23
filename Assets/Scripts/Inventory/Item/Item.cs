@@ -7,12 +7,12 @@ public class Item : MonoBehaviour {
 
 	public string name;
 	public float weight;
-	public GameObject model;
 
 	public void on_pickup()
-	{
+	{/*
 		gameObject.GetComponent<MeshRenderer>().enabled = false; //butelke trzeba bedzie zrobić jednego mesh'a (najlepiej w blenderze)
-		gameObject.GetComponent<Collider>().enabled = false;
+		gameObject.GetComponent<Collider>().enabled = false;*/
+		Destroy(this.gameObject);
 	}
 
 }

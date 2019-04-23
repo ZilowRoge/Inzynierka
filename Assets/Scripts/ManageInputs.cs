@@ -15,6 +15,8 @@ public class ManageInputs : MonoBehaviour {
 
 	private bool inventory_opened = false;
 	private float ui_key_down_timer = 0;
+
+	private bool realoaded = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -35,7 +37,7 @@ public class ManageInputs : MonoBehaviour {
 
 	void manage_player_movment()
 	{
-		float horizontal = Input.GetAxis("Horizontal");     //joystick horizontal
+		float horizontal = Input.GetAxis("Horizontal");//Input.GetAxis("Horizontal");     //joystick horizontal
 		float vertical = Input.GetAxis("Vertical");      //joystick vertical
 		if (horizontal > 0.0f) {
 			player_movment.move_left();
@@ -49,7 +51,7 @@ public class ManageInputs : MonoBehaviour {
 		if (vertical < 0.0f) {
 			player_movment.move_backward();
 		}
-		if (Input.GetKey(KeyCode.Space)) {
+		if (Input.GetKey(KeyCode.Space) || Input.GetButton("XboxA")) {
 			player_movment.jump();
 		}
 		if (Input.GetKeyDown(KeyCode.LeftControl)) {
@@ -58,32 +60,36 @@ public class ManageInputs : MonoBehaviour {
 	}
 
 	void manage_player_slots(){
-		if (Input.GetKeyDown(KeyCode.Joystick1Button2) || Input.GetKeyDown("e")) {
+		if (!player_inventory.is_active() && (Input.GetButton("XboxX") || Input.GetKeyDown("e"))) {
 			player_manager.try_pickup();
 		}
 
-		if (Input.GetKeyDown(KeyCode.Joystick1Button5) || Input.GetKeyDown("z")) {
+		if (Input.GetButtonDown("LeftBumper") || Input.GetKeyDown("z")) {
 			player_manager.swap_slots();
 		}
 
-		if (Input.GetKeyDown(KeyCode.Joystick1Button3) || Input.GetKeyDown("x")) {
+		if (!player_inventory.is_active() && (Input.GetButton("XboxY") || Input.GetKeyDown("x"))) {
 			player_manager.drop_weapon();
 		}
 	}
 
 	void manage_weapons_input()
 	{
-		if (Input.GetKey("v") || Input.GetAxis("LeftTrigger") > 0 || Input.GetMouseButtonDown(1)) {
+		if (Input.GetKey("v") || Input.GetAxis("RightTrigger") > 0 || Input.GetMouseButtonDown(1)) {
 			player_manager.fire();
 		}
 
-		if (Input.GetKeyUp("v") || Input.GetAxis("LeftTrigger") < 0 || Input.GetMouseButtonUp(1)) {
+		if (Input.GetKeyUp("v") || Input.GetAxis("RightTrigger") <= 0 || Input.GetMouseButtonUp(1)) {
 			player_manager.fired();
 		}
-		if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown("r")) {
+		if ((Input.GetAxis("LeftTrigger") == 1 && !realoaded) || Input.GetKeyDown("r")) {
 			player_manager.reload();
+			realoaded = true;
 		}
-		if (Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown("q")) {
+		if (Input.GetAxis("LeftTrigger") < 0.3 && realoaded) {
+			realoaded = false;
+		}
+		if (Input.GetButtonDown("XboxB") || Input.GetKeyDown("q")) {
 			player_manager.swap_modes();
 		}
 	}
@@ -93,22 +99,32 @@ public class ManageInputs : MonoBehaviour {
 		if (ui_key_down_timer < 0.5) {
 			ui_key_down_timer += Time.deltaTime;
 		}
-		if (Input.GetKeyUp("i") && inventory_opened && ui_key_down_timer >= 0.5) {
+		if ((Input.GetButtonDown("XboxMenu") || Input.GetKeyUp("i")) && inventory_opened && ui_key_down_timer >= 0.5) {
 			player_inventory.close_inventory();
 			inventory_opened = false;
 			ui_key_down_timer = 0;
 		}
 
-		if (Input.GetKeyUp("i") && !inventory_opened && ui_key_down_timer >= 0.5) {
+		if ((Input.GetButtonDown("XboxMenu") || Input.GetKeyUp("i")) && !inventory_opened && ui_key_down_timer >= 0.5) {
 			player_inventory.open_inventory();
 			inventory_opened = true;
 			ui_key_down_timer = 0;
 		}
 
-		if (Input.GetKeyDown("[")) {
-			//player_inventory.next_item();
-		} else if (Input.GetKeyDown("]")) {
-			//player_inventory.previous_item();
+		if (Input.GetKeyDown("[") || Input.GetAxis("DPadVertical") > 0) {
+			player_inventory.next_item();
+		} else if (Input.GetKeyDown("]") || Input.GetAxis("DPadVertical") < 0) {
+			player_inventory.previous_item();
+		}
+
+		if (player_inventory.is_active() && (Input.GetButtonDown("XboxY")) || Input.GetKeyDown("x")) {
+			Debug.Log("Drop item");
+			player_inventory.drop_item();
+		}
+
+		if (player_inventory.is_active() && (Input.GetButton("XboxX") || Input.GetKeyDown("e"))) {
+			Debug.Log("Use item");
+			player_inventory.use_item();
 		}
 	}
 }

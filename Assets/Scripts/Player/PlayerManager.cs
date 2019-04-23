@@ -110,11 +110,18 @@ public class PlayerManager : MonoBehaviour {
 			ammobox.on_pickup();
 			player_inventory.pick_up(ammobox); //w inventory musze wiedzieci ile mam ammo i usuwac puste pudelka (to juz chyba zrobione)
 		} else if (hit.collider.tag == "Item") {
-			Debug.Log("item hit");
+			//Debug.Log("item hit");
 			Item item = hit.collider.gameObject.GetComponent<Item>();
-			item.on_pickup();
-			player_inventory.pick_up(item);
+			if (is_max_weight_reched(item.weight)) {
+				item.on_pickup();
+				player_inventory.pick_up(item);
+			}
 		}
+	}
+	public bool is_max_weight_reched(float item_weight)
+	{
+		//Debug.Log("Max weight: " + player_stats.max_weight + " current weight: " + player_inventory.get_current_weight() + " item weight" + item_weight);
+		return player_stats.max_weight >= (player_inventory.get_current_weight() + item_weight);
 	}
 	//TODO:
 	//UI scripts << to trzeba przenieśc do input manager 

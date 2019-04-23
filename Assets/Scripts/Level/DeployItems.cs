@@ -67,12 +67,13 @@ public class DeployItems : MonoBehaviour {
 		}
 	}
 
-	private void deploy_first_aid(Vector3 position)
+
+	public void deploy_first_aid(Vector3 position)
 	{
 		Instantiate(first_aid_prefab, position, new Quaternion(100.0f, 10.0f, 20.0f, -40.0f));
 	}
 
-	private void deploy_water(Vector3 position)
+	public void deploy_water(Vector3 position)
 	{
 		Instantiate(water_bottle_prefab, position, new Quaternion(-10.0f, -20.0f, 10.0f, 10.0f));
 	}

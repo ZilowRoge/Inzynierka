@@ -12,17 +12,18 @@ public class AmmoBox : Item{
 
 
 	void Update(){
-		if(ammo_amount == 0)
+		/*if(ammo_amount == 0)
 		{
 			Destroy(gameObject);
-		}
+		}*/
 	}
-
+/*
 	public void on_pickup()
 	{
 		gameObject.GetComponent<MeshRenderer>().enabled = false;
 		gameObject.GetComponent<BoxCollider>().enabled = false;
 	}
+	*/
 }
 
 }
