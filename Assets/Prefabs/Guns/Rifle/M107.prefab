@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 54584935200542846}
   - component: {fileID: 65428146975316132}
   - component: {fileID: 82437805330263074}
-  - component: {fileID: 114028221324506704}
   - component: {fileID: 114620990624505342}
   m_Layer: 0
   m_Name: M107
@@ -296,35 +295,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114028221324506704
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1334547443581524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5602c5d96035284783115373b4d866a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: M107
-  weight: 12.9
-  model: {fileID: 1334547443581524}
-  max_rounds: 10
-  current_rounds: 0
-  fire_type: 1
-  ammo_type: 1
-  range: 1000
-  damage: 300
-  fire_rate: 1.9
-  multiple_modes: 0
-  shot_sound: {fileID: 8300000, guid: 019d1e59acace08488ec9259118fb452, type: 3}
-  out_of_ammo_sound: {fileID: 8300000, guid: 5fd82d653c51d7c4a892d87644231387, type: 3}
-  realoding_sound: {fileID: 8300000, guid: 3336ffe672aa92e41ae770a7e0c5814e, type: 3}
-  mode_switch_sound: {fileID: 8300000, guid: eca9fbe18d896a948b3ee919180f787b, type: 3}
-  shot_start: {fileID: 4374235821928574}
-  bullet: {fileID: 1193713084362272, guid: 6619c82c5b1906f458f16a3e4758bd7f, type: 2}
-  force: 2000
 --- !u!114 &114620990624505342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -338,11 +308,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: M107
   weight: 12.9
-  model: {fileID: 1334547443581524}
   max_rounds: 10
   current_rounds: 0
   fire_type: 1
-  ammo_type: 1
+  ammo_type: 0
   range: 2000
   damage: 100
   fire_rate: 2
@@ -353,4 +322,4 @@ MonoBehaviour:
   mode_switch_sound: {fileID: 0}
   shot_start: {fileID: 4374235821928574}
   bullet: {fileID: 1193713084362272, guid: 6619c82c5b1906f458f16a3e4758bd7f, type: 2}
-  force: 400
+  force: 1500

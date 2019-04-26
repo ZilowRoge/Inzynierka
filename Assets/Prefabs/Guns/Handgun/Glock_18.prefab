@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 65130222186084428}
   - component: {fileID: 54765239448292818}
   - component: {fileID: 82377510532324560}
-  - component: {fileID: 114308770139222962}
   - component: {fileID: 114488872887189556}
   m_Layer: 0
   m_Name: Glock_18
@@ -68,8 +67,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1465533001330606}
   m_LocalRotation: {x: -0.24107674, y: 0.6647421, z: 0.6647421, w: -0.24107668}
-  m_LocalPosition: {x: 7.3739185, y: 0.72978765, z: 49.392666}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 19.511967, y: 0.23473772, z: -483.53854}
+  m_LocalScale: {x: 0.20000014, y: 0.20000012, z: 0.20000008}
   m_Children:
   - {fileID: 4316696315369556}
   m_Father: {fileID: 0}
@@ -223,35 +222,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114308770139222962
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1465533001330606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5602c5d96035284783115373b4d866a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Glock-18
-  weight: 0.6
-  model: {fileID: 1465533001330606}
-  max_rounds: 20
-  current_rounds: 0
-  fire_type: 1
-  ammo_type: 0
-  range: 50
-  damage: 12
-  fire_rate: 0.1
-  multiple_modes: 1
-  shot_sound: {fileID: 8300000, guid: 87d9399f56ca6874a93c73a42e178879, type: 3}
-  out_of_ammo_sound: {fileID: 8300000, guid: 5fd82d653c51d7c4a892d87644231387, type: 3}
-  realoding_sound: {fileID: 8300000, guid: 3336ffe672aa92e41ae770a7e0c5814e, type: 3}
-  mode_switch_sound: {fileID: 8300000, guid: eca9fbe18d896a948b3ee919180f787b, type: 3}
-  shot_start: {fileID: 4316696315369556}
-  bullet: {fileID: 1671100030186626, guid: d009abb084427b8419a411880e4a65ef, type: 2}
-  force: 400
 --- !u!114 &114488872887189556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -265,7 +235,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Glock 18
   weight: 800
-  model: {fileID: 1465533001330606}
   max_rounds: 17
   current_rounds: 0
   fire_type: 1

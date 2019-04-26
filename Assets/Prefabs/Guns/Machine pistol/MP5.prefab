@@ -55,8 +55,6 @@ GameObject:
   - component: {fileID: 23106752975417694}
   - component: {fileID: 54313506725962300}
   - component: {fileID: 65502201213506656}
-  - component: {fileID: 114127365944969262}
-  - component: {fileID: 114992503347850044}
   - component: {fileID: 82762023857941842}
   - component: {fileID: 114486614632688524}
   m_Layer: 0
@@ -86,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1911205221010898}
   m_LocalRotation: {x: -0.6116786, y: 0.35475242, z: -0.35475248, w: 0.6116786}
-  m_LocalPosition: {x: 6.6071196, y: 0.972497, z: 48.837387}
+  m_LocalPosition: {x: 7.3685594, y: 0.24703638, z: 7.6415353}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4223847651044372}
@@ -296,35 +294,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114127365944969262
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1911205221010898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5602c5d96035284783115373b4d866a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: 
-  weight: 0
-  model: {fileID: 0}
-  max_rounds: 30
-  current_rounds: 0
-  fire_type: 0
-  ammo_type: 2
-  range: 50
-  damage: 12
-  fire_rate: 0.1
-  multiple_modes: 1
-  shot_sound: {fileID: 8300000, guid: 87d9399f56ca6874a93c73a42e178879, type: 3}
-  out_of_ammo_sound: {fileID: 8300000, guid: 5fd82d653c51d7c4a892d87644231387, type: 3}
-  realoding_sound: {fileID: 8300000, guid: 3336ffe672aa92e41ae770a7e0c5814e, type: 3}
-  mode_switch_sound: {fileID: 8300000, guid: eca9fbe18d896a948b3ee919180f787b, type: 3}
-  shot_start: {fileID: 4922070769005872}
-  bullet: {fileID: 1671100030186626, guid: d009abb084427b8419a411880e4a65ef, type: 2}
-  force: 400
 --- !u!114 &114486614632688524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -338,11 +307,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: MP5
   weight: 2.5
-  model: {fileID: 1911205221010898}
   max_rounds: 30
   current_rounds: 0
   fire_type: 0
-  ammo_type: 2
+  ammo_type: 1
   range: 300
   damage: 30
   fire_rate: 0.1
@@ -354,17 +322,3 @@ MonoBehaviour:
   shot_start: {fileID: 4922070769005872}
   bullet: {fileID: 1671100030186626, guid: d009abb084427b8419a411880e4a65ef, type: 2}
   force: 400
---- !u!114 &114992503347850044
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1911205221010898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fe85513c5c6c1f4db753559ef827a13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: MP5
-  weight: 3
-  model: {fileID: 1911205221010898}

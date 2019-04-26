@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 4442911915467278}
   - component: {fileID: 33995489300867150}
   - component: {fileID: 23839307108559194}
-  - component: {fileID: 114634433517989636}
   - component: {fileID: 54777100424550012}
   - component: {fileID: 65769665628030370}
   - component: {fileID: 82388566456282644}
@@ -85,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1908199498438424}
   m_LocalRotation: {x: -0, y: -0, z: -0.40020803, w: 0.91642433}
-  m_LocalPosition: {x: -1.72, y: 4.82, z: 0.06039977}
+  m_LocalPosition: {x: 2.78, y: 4.02, z: 7.86}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4102107317085622}
@@ -323,33 +322,4 @@ MonoBehaviour:
   mode_switch_sound: {fileID: 8300000, guid: eca9fbe18d896a948b3ee919180f787b, type: 3}
   shot_start: {fileID: 4613942366406014}
   bullet: {fileID: 1220658119092060, guid: 5e892ee3fea7f814ab6a9b7eb5780184, type: 2}
-  force: 400
---- !u!114 &114634433517989636
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1908199498438424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5602c5d96035284783115373b4d866a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: AK-47
-  weight: 3.5
-  model: {fileID: 1908199498438424}
-  max_rounds: 30
-  current_rounds: 0
-  fire_type: 0
-  ammo_type: 0
-  range: 100
-  damage: 30
-  fire_rate: 0.1
-  multiple_modes: 1
-  shot_sound: {fileID: 8300000, guid: 91534ecd964184446afc01a3d7e2ad6c, type: 3}
-  out_of_ammo_sound: {fileID: 8300000, guid: 5fd82d653c51d7c4a892d87644231387, type: 3}
-  realoding_sound: {fileID: 8300000, guid: 3336ffe672aa92e41ae770a7e0c5814e, type: 3}
-  mode_switch_sound: {fileID: 8300000, guid: eca9fbe18d896a948b3ee919180f787b, type: 3}
-  shot_start: {fileID: 4613942366406014}
-  bullet: {fileID: 1862602229833910, guid: 9b08f675a2264d247ade5bfd67486cb7, type: 2}
   force: 400

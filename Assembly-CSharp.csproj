@@ -138,6 +138,11 @@
      <Compile Include="Assets\GoogleVR\Scripts\Utilities\GvrVRHelpers.cs" />
      <Compile Include="Assets\GoogleVR\Scripts\Video\GvrVideoPlayerTexture.cs" />
      <Compile Include="Assets\Scripts\Common.cs" />
+     <Compile Include="Assets\Scripts\DataControl\DataHandler.cs" />
+     <Compile Include="Assets\Scripts\DataControl\InventoryData.cs" />
+     <Compile Include="Assets\Scripts\DataControl\ItemData.cs" />
+     <Compile Include="Assets\Scripts\DataControl\MobData.cs" />
+     <Compile Include="Assets\Scripts\DataControl\PlayerData.cs" />
      <Compile Include="Assets\Scripts\Inventory\BackpackBehavior.cs" />
      <Compile Include="Assets\Scripts\Inventory\Item\AmmoBox.cs" />
      <Compile Include="Assets\Scripts\Inventory\Item\FirstAid.cs" />
@@ -149,7 +154,11 @@
      <Compile Include="Assets\Scripts\Inventory\PlayerInventoryUI.cs" />
      <Compile Include="Assets\Scripts\Level\DeployItems.cs" />
      <Compile Include="Assets\Scripts\ManageInputs.cs" />
+     <Compile Include="Assets\Scripts\MenuManager.cs" />
      <Compile Include="Assets\Scripts\Mob\FieldOfView.cs" />
+     <Compile Include="Assets\Scripts\Mob\GuardianMobChase.cs" />
+     <Compile Include="Assets\Scripts\Mob\GuardianMobController.cs" />
+     <Compile Include="Assets\Scripts\Mob\GuardianMobPatrol.cs" />
      <Compile Include="Assets\Scripts\Mob\MobBehavior.cs" />
      <Compile Include="Assets\Scripts\Mob\MobChase.cs" />
      <Compile Include="Assets\Scripts\Mob\MobController.cs" />
@@ -159,6 +168,7 @@
      <Compile Include="Assets\Scripts\Mob\MobStats.cs" />
      <Compile Include="Assets\Scripts\MobAI\MovingGraph\Graph.cs" />
      <Compile Include="Assets\Scripts\MobAI\MovingGraph\Node.cs" />
+     <Compile Include="Assets\Scripts\OpenDoor.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBackpackSlot.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovment.cs" />

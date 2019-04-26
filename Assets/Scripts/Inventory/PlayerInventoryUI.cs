@@ -16,7 +16,7 @@ public class PlayerInventoryUI : MonoBehaviour {
 	private int selected_item;
 	private float current_highlight_position;
 	List<int> items_amount = new List<int>();
-	public bool debug = true;
+	public bool debug = false;
 
 	public Text input_button;
 	void Awake() {
@@ -146,6 +146,18 @@ public class PlayerInventoryUI : MonoBehaviour {
 		if (items_amount[selected_item] > 0) {
 			use_item_callback(selected_item);
 		}
+	}
+
+	public void on_load(int first_aid, int watter_bottle, int food_ration, int ammo9mm, int ammo5, int ammo556mm, int ammo762mm)
+	{
+		items_amount[0] = first_aid;
+		items_amount[1] = watter_bottle;
+		items_amount[2] = food_ration;
+		items_amount[3] = ammo9mm;
+		items_amount[4] = ammo5;
+		items_amount[5] = ammo762mm;
+		items_amount[6] = ammo556mm;
+		update_inventory();
 	}
 	private void set_highlight_position(float pos_y)
 	{

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Mobs {
-public class MobController : MonoBehaviour {
+public class GuardianMobController : MonoBehaviour {
 	public enum MobBehaviorState {
 		EPATROL,
 		EIDLE,
@@ -11,9 +11,9 @@ public class MobController : MonoBehaviour {
 	}
 	public MobBehaviorState state = MobBehaviorState.EPATROL;
 
-	public MobPatrol patrol_script;
+	public GuardianMobPatrol patrol_script;
 	public MobIdle idle_script;
-	public MobChase chase_script;
+	public GuardianMobChase chase_script;
 	public Animator animator;
 	public MobStats mob_stats;
 
@@ -21,9 +21,9 @@ public class MobController : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		mob_stats = GetComponent<MobStats>();
-		patrol_script = GetComponent<MobPatrol>();
+		patrol_script = GetComponent<GuardianMobPatrol>();
 		idle_script = GetComponent<MobIdle>();
-		chase_script = GetComponent<MobChase>();
+		chase_script = GetComponent<GuardianMobChase>();
 		mob_view = GetComponent<FieldOfView>();
 		animator = GetComponent<Animator>();
 		animator.speed = 0.75f;/*attack speed */
@@ -73,6 +73,7 @@ public class MobController : MonoBehaviour {
 	}
 	void patrol ()
 	{
+		//Debug.Log("Patrol");
 		if (player_spotted()) {
 			change_state(MobBehaviorState.ECHASE);
 			patrol_script.stop_execution();

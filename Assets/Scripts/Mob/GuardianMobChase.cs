@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 namespace Mobs{
-public class MobChase : MobBehavior {
-	// Use this for initialization
+public class GuardianMobChase : MobBehavior {
+
 	public FieldOfView mob_view;
 	void Start () {
 		mob_view = GetComponent<FieldOfView>();
@@ -24,15 +23,11 @@ public class MobChase : MobBehavior {
 			movment_script.activate_chase_move();
 		}
 	}
-	
-	public void set_target(Transform target)
-	{
-		this.target = target;
-	}
 	public bool can_change_to_patrol()
 	{
-		return target == null || Vector3.Distance(transform.position, target.position) > mob_view.view_range;
+		return target == null ||
+		       Vector3.Distance(transform.position, target.position) > mob_view.view_range ||
+		       Vector3.Distance(central_point, target.position) > radius;
 	}
-
 }
-} //namespace Mobs
+}

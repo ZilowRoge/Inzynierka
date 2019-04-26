@@ -102,7 +102,12 @@ public class WeaponBehavior : Inventory.Items.Item {
 	public void switch_mode()
 	{
 		audio_source.PlayOneShot(mode_switch_sound);
-		fire_type = (EFireType)((((int)fire_type)+1) % 3);
+		if(fire_type == EFireType.Automatic) {
+			fire_type = EFireType.Semi_automatic;
+		} else {
+			fire_type = EFireType.Automatic;
+		}
+		//fire_type = (EFireType)((((int)fire_type)+1) % 3);
 	}
 	public void fired()
 	{
@@ -111,6 +116,7 @@ public class WeaponBehavior : Inventory.Items.Item {
 
 	public void fire()
 	{
+		Debug.Log("Fire type = " + fire_type);
 		switch(fire_type)
 		{
 			case EFireType.Semi_automatic:

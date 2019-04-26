@@ -10,7 +10,9 @@ public class PlayerStats : MonoBehaviour {
 	public float max_thirst;
 	public float current_thirst;
 
-	public float max_weight = 3;
+	public float max_weight = 20;
+
+	public float max_speed = 20;
 
 	float timer = 0;
 
@@ -21,8 +23,17 @@ public class PlayerStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		current_hunger -= Common.hunger_drop * Time.deltaTime;
-		current_thirst -= Common.fast_thirst_drop * Time.deltaTime;
+		if (current_hunger > -100 ) {
+			current_hunger -= Common.hunger_drop * Time.deltaTime;
+		} else {
+			curren_health_points -= 0.5f;
+		}
+		if (current_thirst > -100) {
+			current_thirst -= Common.fast_thirst_drop * Time.deltaTime;
+			max_speed = 20;
+		} else {
+			max_speed = 10;
+		}
 	}
 /*Jezeli pragnienie spada x na sec to ile spada w czasie t
  x - 1s

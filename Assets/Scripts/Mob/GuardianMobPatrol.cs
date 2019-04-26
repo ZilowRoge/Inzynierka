@@ -1,14 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 namespace Mobs {
-public class MobPatrol : MobBehavior {
+public class GuardianMobPatrol : MobBehavior {
 
 	[Range(3.0f, 100.0f)]
 	public float moving_range = 10.0f;
 	public LayerMask obsticle_mask;
-
 	public bool active_target = false;
 	// Use this for initialization
 	void Start () {
@@ -33,9 +31,9 @@ public class MobPatrol : MobBehavior {
 	{
 		if (target != null) {
 			if (!active_target) {
-				var new_position = get_random_point(moving_range);
+				var new_position = get_random_point(central_point, radius);
+				//Debug.Log("New point: " + new_position);
 				if (validate_point(new_position)) {
-					//Debug.Log("Target assigned");
 					target.position = new_position;
 					active_target = true;
 				}
@@ -60,10 +58,10 @@ public class MobPatrol : MobBehavior {
 	private bool validate_point(Vector3 point)
 	{
 		Debug.DrawLine(transform.position, point, Color.red, 10.0f);
+		//Debug.Log("Validation: " + !Physics.Linecast(transform.position, point));
 		return !Physics.Linecast(transform.position, point) &&
 		       Vector3.Distance(transform.position, point) > moving_range/2;
 	}
-
 }
-} //namespace speed
+}
 

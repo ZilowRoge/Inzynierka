@@ -4,18 +4,17 @@ using UnityEngine;
 using Weapon;
 using Inventory;
 using Inventory.Items;
+using UnityEngine.SceneManagement;
 
 namespace Player {
 
 public class PlayerManager : MonoBehaviour {
 	public PlayerWeaponSlots weapon_slots;
-
-	public PlayerBackpackSlot backpack_slot;
 	public PlayerInventory player_inventory;
 	public WeaponBehavior weapon_script;
-	public PlayerInventoryUI inventory_ui;
 	public PlayerStats player_stats;
-
+	public DataControl.DataHandler data_handler;
+	public ItemFactory item_factory;
 	bool fire_pressed = false;
 
 	// Use this for initialization
@@ -25,7 +24,8 @@ public class PlayerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (fire_pressed) {
+		if (fire_pressed && weapon_script != null) {
+			Debug.Log("Fire Update");
 			weapon_script.fire();
 		}
 
@@ -33,7 +33,9 @@ public class PlayerManager : MonoBehaviour {
 			player_stats.curren_health_points = player_stats.max_health_points;
 			player_stats.current_hunger = 0;
 			player_stats.current_thirst = 0;
-			transform.position = new Vector3(0,10,0);
+			//PlayerPrefs.SetInt("Win", 0);
+			SceneManager.LoadScene("End_game", LoadSceneMode.Single);
+			//transform.position = new Vector3(0,10,0);
 		}
 	}
 
@@ -53,7 +55,7 @@ public class PlayerManager : MonoBehaviour {
 
 	public void swap_modes()
 	{
-		if (weapon_script.can_change_mode()) {
+		if (weapon_script.can_change_mode() && weapon_script != null) {
 			weapon_script.switch_mode();
 		}
 	}
@@ -103,14 +105,12 @@ public class PlayerManager : MonoBehaviour {
 		if (hit.collider.tag == "Weapon" && weapon_slots.can_pickup()) {
 			weapon_slots.pick_up(hit.collider.gameObject);
 			weapon_script = weapon_slots.get_script();
-		} else if (hit.collider.tag == "Backpack" && backpack_slot.can_pickup()) {
-			backpack_slot.pick_up(hit.collider.gameObject);
 		} else if (hit.collider.tag == "Ammo") {
 			AmmoBox ammobox = hit.collider.gameObject.GetComponent<AmmoBox>();
 			ammobox.on_pickup();
-			player_inventory.pick_up(ammobox); //w inventory musze wiedzieci ile mam ammo i usuwac puste pudelka (to juz chyba zrobione)
+			player_inventory.pick_up(ammobox);
 		} else if (hit.collider.tag == "Item") {
-			//Debug.Log("item hit");
+			Debug.Log("item hit");
 			Item item = hit.collider.gameObject.GetComponent<Item>();
 			if (is_max_weight_reched(item.weight)) {
 				item.on_pickup();
@@ -123,36 +123,58 @@ public class PlayerManager : MonoBehaviour {
 		//Debug.Log("Max weight: " + player_stats.max_weight + " current weight: " + player_inventory.get_current_weight() + " item weight" + item_weight);
 		return player_stats.max_weight >= (player_inventory.get_current_weight() + item_weight);
 	}
-	//TODO:
-	//UI scripts << to trzeba przenieśc do input manager 
-/* 
-	public void open_inventory()
+
+	public void on_save()
 	{
-		Debug.Log("Open UI");
-		inventory_ui.on_ui_open();
+		DataControl.PlayerData player_data = new DataControl.PlayerData();
+		player_data.pos_x = transform.position.x;
+		player_data.pos_y = transform.position.y;
+		player_data.pos_z = transform.position.z;
+		player_data.health = player_stats.curren_health_points;
+		player_data.hunger = player_stats.current_hunger;
+		player_data.thirst = player_stats.current_thirst;
+		if (weapon_slots.slot1 != null) {
+			Debug.Log("Save weapon: " + weapon_slots.slot1.name);
+			player_data.slot1_weapon_name = weapon_slots.slot1.name;
+		}
+		if (weapon_slots.slot2 != null) {
+			player_data.slot2_weapon_name = weapon_slots.slot2.name;
+		}
+		data_handler.save_player_data(player_data);
+		player_inventory.on_save();
 	}
 
-	public void close_inventory()
+	public void on_load()
 	{
-		Debug.Log("Close UI");	
-		inventory_ui.on_ui_close();
+		DataControl.PlayerData player_data = data_handler.load_player_data();
+		transform.position = new Vector3(player_data.pos_x, player_data.pos_y, player_data.pos_z);
+		player_stats.curren_health_points = player_data.health;
+		player_stats.current_hunger = player_data.hunger;
+		player_stats.current_thirst = player_data.thirst;
+		
+		set_weapon_slot(player_data.slot2_weapon_name, 2);
+		set_weapon_slot(player_data.slot1_weapon_name, 1);
+		player_inventory.on_load();
 	}
 
-	public void next_item()
+	private void set_weapon_slot(string name, int slot_number)
 	{
-		inventory_ui.select_next_item();
+		GameObject weapon = item_factory.get_weapon_from_name(name);
+		if (slot_number == 1 && weapon != null) {
+			Debug.Log("Setting weapon slot1");
+			GameObject obj = Instantiate(weapon, new Vector3(0,0,0), new Quaternion(0,0,0,0));
+			weapon_slots.pick_up(obj);
+			weapon_script = weapon_slots.get_script();
+		}
+
+		if (slot_number == 2 && weapon != null) {
+			GameObject obj = Instantiate(weapon, new Vector3(0,0,0), new Quaternion(0,0,0,0));
+			weapon_slots.pick_up(obj);
+			weapon_script = weapon_slots.get_script();
+			swap_slots();
+		}
 	}
 
-	public void previous_item()
-	{
-		inventory_ui.select_previous_item();
-	}
-*/
-	/// <summary>
-	/// OnCollisionEnter is called when this collider/rigidbody has begun
-	/// touching another rigidbody/collider.
-	/// </summary>
-	/// <param name="other">The Collision data associated with this collision.</param>
 	void OnCollisionEnter(Collision other)
 	{
 		if (other.collider.tag == "MobAttack") {
@@ -160,6 +182,12 @@ public class PlayerManager : MonoBehaviour {
 			player_stats.curren_health_points -= other.collider.GetComponentInParent<Mobs.MobStats>().damage;
 			Debug.Log("Hited health left: " + player_stats.curren_health_points);
 		}
+	}
+
+	void OnTriggerEnter(Collider other) {
+		Debug.Log("You won");
+		PlayerPrefs.SetInt("Win", 1);
+		SceneManager.LoadScene("End_game", LoadSceneMode.Single);
 	}
 }
 

@@ -10,6 +10,7 @@ public class PlayerWeaponSlots : MonoBehaviour {
 	public GameObject slot2 = null;
 	public Transform hand_position;
 	public WeaponBehavior weapon_behavior;
+	public Transform item_parent;
 
 	Transform main_camera_transform;
 	bool holding_weapon = false;
@@ -88,7 +89,7 @@ public class PlayerWeaponSlots : MonoBehaviour {
 	public void drop_weapon()
 	{
 		slot1.GetComponent<Rigidbody>().isKinematic = false;
-		slot1.transform.SetParent(null);
+		slot1.transform.SetParent(item_parent);
 		slot1.GetComponent<BoxCollider>().enabled = true;
 		slot1 = null;
 		holding_weapon = false;

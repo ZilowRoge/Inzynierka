@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Player{
 public class PlayerMovment : MonoBehaviour {
-
+	public PlayerStats player_stats;
 	public GameObject player_object;
 
 	public GameObject player_body;
@@ -15,7 +15,7 @@ public class PlayerMovment : MonoBehaviour {
 
 	public float jump_force = 3200;
 
-	public float max_speed = 20;
+	private float max_speed;
 
 	public float max_sneak_speed = 6;
 
@@ -29,6 +29,9 @@ public class PlayerMovment : MonoBehaviour {
 	{
 		current_speed = max_speed;
 		player_rigidbody = this.GetComponent<Rigidbody>();
+		player_stats = GetComponent<PlayerStats>();
+		max_speed = player_stats.max_speed;
+
 	}
 	
 	private void Update()

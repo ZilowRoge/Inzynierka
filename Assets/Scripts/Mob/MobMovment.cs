@@ -103,11 +103,13 @@ public class MobMovment : MonoBehaviour {
 	*/
 	private void move_to_target()
 	{
-		rotate();
+		
 
 		if(is_facing_target()) {
 			//Debug.Log("LookAt: " + target);
 			transform.LookAt(target);
+		} else {
+			rotate();
 		}
 
 		float step =  speed * Time.deltaTime;

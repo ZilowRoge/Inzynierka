@@ -6,6 +6,7 @@ using Player;
 
 namespace Inventory{
 public class PlayerInventory : MonoBehaviour {
+	public DataControl.DataHandler data_handler;
 	private PlayerStats player_stats;
 	public Transform drop_point;
 	public ItemFactory item_factory;
@@ -150,6 +151,42 @@ public class PlayerInventory : MonoBehaviour {
 		ammo_amount[EAmmoType.Calliber_762mm] = 0;
 		ammo_amount[EAmmoType.Calliber_556mm] = 0;
 		return ammo_amount;
+	}
+
+	public void on_save()
+	{
+		DataControl.InventoryData player_inventory = new DataControl.InventoryData();
+		player_inventory.first_aid = first_aid_amount;
+		player_inventory.water_bottle = water_bottle_amount;
+		player_inventory.food_ration = food_ration_amount;
+		player_inventory.ammo_9mm = ammo_amount[EAmmoType.Calliber_9mm];
+		player_inventory.ammo_5 = ammo_amount[EAmmoType.Calliber_5];
+		player_inventory.ammo_556mm = ammo_amount[EAmmoType.Calliber_556mm];
+		player_inventory.ammo_762mm = ammo_amount[EAmmoType.Calliber_762mm];
+		player_inventory.current_weight = current_weight;
+		Debug.Log("Player inventory: " + player_inventory.first_aid + " " + player_inventory.water_bottle + " " + player_inventory.food_ration);
+		data_handler.save_inventory(player_inventory);
+	}
+
+	public void on_load()
+	{
+		DataControl.InventoryData player_inventory = data_handler.load_inventory();
+		//Debug.Log("Load: " + player_inventory.first_aid + " " + player_inventory.water_bottle + " " + player_inventory.food_ration);
+		first_aid_amount = player_inventory.first_aid;
+		water_bottle_amount = player_inventory.water_bottle;
+		food_ration_amount = player_inventory.food_ration;
+		ammo_amount[EAmmoType.Calliber_9mm] = player_inventory.ammo_9mm;
+		ammo_amount[EAmmoType.Calliber_5] = player_inventory.ammo_5;
+		ammo_amount[EAmmoType.Calliber_556mm] = player_inventory.ammo_556mm;
+		ammo_amount[EAmmoType.Calliber_762mm] = player_inventory.ammo_762mm;
+		current_weight = player_inventory.current_weight;
+		inventory_ui.on_load(first_aid_amount,
+		                     water_bottle_amount,
+		                     food_ration_amount,
+		                     ammo_amount[EAmmoType.Calliber_9mm],
+		                     ammo_amount[EAmmoType.Calliber_5],
+		                     ammo_amount[EAmmoType.Calliber_556mm],
+		                     ammo_amount[EAmmoType.Calliber_762mm]);
 	}
 /*
 	public void remove_ammo(EAmmoType type, int ammo_left){

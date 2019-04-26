@@ -521,7 +521,8 @@ MonoBehaviour:
   movment_script: {fileID: 0}
   location_offset: 1.5
   target: {fileID: 0}
-  destination_set: 0
+  central_point: {x: 0, y: 0, z: 0}
+  radius: 0
   moving_range: 10
   obsticle_mask:
     serializedVersion: 2
@@ -541,6 +542,8 @@ MonoBehaviour:
   movment_script: {fileID: 114017796613177644}
   location_offset: 1.5
   target: {fileID: 0}
+  central_point: {x: 0, y: 0, z: 0}
+  radius: 0
   idle_timer: 0
   point_range: 30.4
   rotation_point_set: 0
@@ -560,7 +563,7 @@ MonoBehaviour:
   idle_script: {fileID: 0}
   chase_script: {fileID: 0}
   animator: {fileID: 0}
-  attack_target: {fileID: 0}
+  mob_stats: {fileID: 0}
   mob_view: {fileID: 0}
 --- !u!114 &114913817703500976
 MonoBehaviour:
@@ -576,6 +579,8 @@ MonoBehaviour:
   movment_script: {fileID: 0}
   location_offset: 1.5
   target: {fileID: 0}
+  central_point: {x: 0, y: 0, z: 0}
+  radius: 0
   mob_view: {fileID: 0}
 --- !u!135 &135123227063538872
 SphereCollider:

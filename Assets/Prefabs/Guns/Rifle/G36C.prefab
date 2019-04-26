@@ -41,12 +41,10 @@ GameObject:
   - component: {fileID: 54366288381323596}
   - component: {fileID: 65121567540207082}
   - component: {fileID: 82074951031926478}
-  - component: {fileID: 114410743665800910}
-  - component: {fileID: 114187640152630348}
   - component: {fileID: 114441596743215090}
   m_Layer: 0
   m_Name: G36C
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,9 +83,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1387462361533096}
-  m_LocalRotation: {x: -0.6771027, y: 0.203794, z: -0.20379406, w: 0.6771026}
-  m_LocalPosition: {x: 0.24728285, y: 1.5042447, z: 48.25775}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalRotation: {x: -0.52156526, y: 0.5215632, z: -0.47746179, w: 0.477464}
+  m_LocalPosition: {x: 497.62265, y: 0.050137278, z: 380.68207}
+  m_LocalScale: {x: 0.19999999, y: 0.2, z: 0.20000008}
   m_Children:
   - {fileID: 4233597548922938}
   - {fileID: 4583563847885284}
@@ -296,49 +294,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114187640152630348
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1387462361533096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fe85513c5c6c1f4db753559ef827a13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: 
-  weight: 0
-  model: {fileID: 1387462361533096}
---- !u!114 &114410743665800910
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1387462361533096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5602c5d96035284783115373b4d866a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: H&K G36C
-  weight: 3
-  model: {fileID: 1387462361533096}
-  max_rounds: 30
-  current_rounds: 0
-  fire_type: 0
-  ammo_type: 4
-  range: 1000
-  damage: 30
-  fire_rate: 0.1
-  multiple_modes: 1
-  shot_sound: {fileID: 8300000, guid: 91534ecd964184446afc01a3d7e2ad6c, type: 3}
-  out_of_ammo_sound: {fileID: 8300000, guid: 5fd82d653c51d7c4a892d87644231387, type: 3}
-  realoding_sound: {fileID: 8300000, guid: 3336ffe672aa92e41ae770a7e0c5814e, type: 3}
-  mode_switch_sound: {fileID: 8300000, guid: eca9fbe18d896a948b3ee919180f787b, type: 3}
-  shot_start: {fileID: 4583563847885284}
-  bullet: {fileID: 0}
-  force: 600
 --- !u!114 &114441596743215090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -352,11 +307,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: H&KG36C
   weight: 2.8
-  model: {fileID: 1387462361533096}
   max_rounds: 30
   current_rounds: 0
   fire_type: 0
-  ammo_type: 4
+  ammo_type: 3
   range: 300
   damage: 30
   fire_rate: 0.08
@@ -367,4 +321,4 @@ MonoBehaviour:
   mode_switch_sound: {fileID: 8300000, guid: eca9fbe18d896a948b3ee919180f787b, type: 3}
   shot_start: {fileID: 4583563847885284}
   bullet: {fileID: 1862602229833910, guid: 9b08f675a2264d247ade5bfd67486cb7, type: 2}
-  force: 400
+  force: 1500

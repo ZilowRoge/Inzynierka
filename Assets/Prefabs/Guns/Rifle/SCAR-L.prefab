@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 54585647829154458}
   - component: {fileID: 82300673500227594}
   - component: {fileID: 65398663672139020}
-  - component: {fileID: 114809959898065998}
   - component: {fileID: 114793348683457578}
   m_Layer: 0
   m_Name: SCAR-L
@@ -72,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1254125875455876}
   m_LocalRotation: {x: -0.6762381, y: 0.20664477, z: -0.2066448, w: 0.6762381}
-  m_LocalPosition: {x: -1.7605379, y: 1.0892996, z: 48.896}
+  m_LocalPosition: {x: -1.76, y: 1.09, z: 9.24}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4687271793557244}
@@ -307,13 +306,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85a053cd29baef4c9c18242342bea04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: SCAR-L
+  name: SCAR-H
   weight: 3.3
-  model: {fileID: 1254125875455876}
   max_rounds: 30
   current_rounds: 0
   fire_type: 0
-  ammo_type: 4
+  ammo_type: 2
   range: 400
   damage: 35
   fire_rate: 0.092307694
@@ -323,34 +321,5 @@ MonoBehaviour:
   realoding_sound: {fileID: 8300000, guid: 3336ffe672aa92e41ae770a7e0c5814e, type: 3}
   mode_switch_sound: {fileID: 8300000, guid: eca9fbe18d896a948b3ee919180f787b, type: 3}
   shot_start: {fileID: 4691269977394088}
-  bullet: {fileID: 1862602229833910, guid: 9b08f675a2264d247ade5bfd67486cb7, type: 2}
+  bullet: {fileID: 1220658119092060, guid: 5e892ee3fea7f814ab6a9b7eb5780184, type: 2}
   force: 400
---- !u!114 &114809959898065998
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1254125875455876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5602c5d96035284783115373b4d866a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: SCAR-L
-  weight: 3
-  model: {fileID: 1254125875455876}
-  max_rounds: 30
-  current_rounds: 0
-  fire_type: 0
-  ammo_type: 4
-  range: 1000
-  damage: 30
-  fire_rate: 0.1
-  multiple_modes: 1
-  shot_sound: {fileID: 8300000, guid: 91534ecd964184446afc01a3d7e2ad6c, type: 3}
-  out_of_ammo_sound: {fileID: 8300000, guid: 5fd82d653c51d7c4a892d87644231387, type: 3}
-  realoding_sound: {fileID: 8300000, guid: 3336ffe672aa92e41ae770a7e0c5814e, type: 3}
-  mode_switch_sound: {fileID: 8300000, guid: eca9fbe18d896a948b3ee919180f787b, type: 3}
-  shot_start: {fileID: 4691269977394088}
-  bullet: {fileID: 1862602229833910, guid: 9b08f675a2264d247ade5bfd67486cb7, type: 2}
-  force: 600

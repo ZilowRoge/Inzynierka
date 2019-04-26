@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Weapon;
 public class Common : MonoBehaviour {
-	public static GameObject ammobox5;
-	public static GameObject ammobox9mm;
-	public static GameObject ammobox556mm;
-	public static GameObject ammobox762mm;
+	public GameObject ammobox5;
+	public GameObject ammobox9mm;
+	public GameObject ammobox556mm;
+	public GameObject ammobox762mm;
 	public static Dictionary<EAmmoType, string> ammo_type_to_string = new Dictionary<EAmmoType, string>();
 	public static Dictionary<EAmmoType, string> ammo_type_to_path = new Dictionary<EAmmoType, string>();
 	public static int max_ammo = 30;
@@ -19,7 +19,6 @@ public class Common : MonoBehaviour {
 	public static float first_aid_heal = 10.0f;
 
 	public static float hunger_heal = 30.0f;
-
 
 	// Use this for initialization
 	void Awake () {
@@ -45,13 +44,14 @@ public class Common : MonoBehaviour {
 		//ammo_type_to_path[EAmmoType.Calliber_45] = "Assets/Prefabs/Ammo/Ammobo45.prefab";
 	}
 
-	public static GameObject get_object_from_type(Weapon.EAmmoType type){
+	public GameObject get_object_from_type(Weapon.EAmmoType type){
 	//	Debug.Log(path);
 		GameObject prefab = null;
 		switch (type)
 		{
 			case Weapon.EAmmoType.Calliber_5:
 			prefab = ammobox5;
+			Debug.Log("Ammobox1: " + prefab);
 			break;
 			case Weapon.EAmmoType.Calliber_9mm:
 			prefab = ammobox9mm;
